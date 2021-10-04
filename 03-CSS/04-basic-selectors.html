@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Selectors</title>
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        /* universal electro*/
+        *{
+            border: 1px solid rgb(20, 117, 0);
+            padding: 10px;
+        }
+        /* Type of label*/
+        ul{
+            list-style: none;
+        }
+        li{
+            font-size: 1.4rem;
+        }
+        /* Descending*/
+        main section ul li{
+            background-color: #92e083;
+        }
+        /* Class*/
+        .upper{
+            text-transform: uppercase;
+        }
+        /* ID*/
+        #important{
+            color: rgb(255, 7, 7);
+        }
+        /* Combine*/
+        main section ul.games li#important {
+            background-color: rgb(99, 4, 4);
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <h1><a href="./">⬅️</a> Basic Selectors</h1>
+        </header>
+        <section>
+            <ul class="games">
+                <li class="upper">Hollow knigth</li>
+                <li id="important">Metroid Dream</li>
+                <li>Super Mario Odissey</li>
+                <li>Legends of Zelda Breath of the wild</li>
+                <li>Luigi´s mansion</li>
+            </ul>
+        </section>
+    </main>
+</body>
+</html>
