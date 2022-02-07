@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challenge Sprites</title>
+    <style>
+        body {
+            background-color: #17a053;
+            border: 10px solid white ;
+            margin: 0;
+            height: auto;
+
+        }
+        main{
+            border: 2px solid white;
+            margin: 0 auto;
+            width: 80%;
+        }
+        main header div.logo {
+            background: url(images/spriteweb.png) no-repeat;
+            background-position: -20px -400px;
+            height: 180px;
+            margin: 0px auto;
+            width: 180px;
+            
+        }
+      
+        main header div.menu ul {
+            list-style: none;
+            margin: 10px auto;
+            text-align: center;
+            
+        }
+        main header div.menu ul li {
+            display: inline-block;
+        }
+        /*Menu*/
+        main header div.menu ul li {
+            background-color: #00000066;
+            border-bottom: 4px solid white;
+            color: #fff;
+            display: inline-block;
+            margin-top: 4px;
+            padding: 10px 20px;
+            font-family: verdana;
+            text-transform: uppercase;
+            text-align: center;
+            transition: 0.3s all ease-in; /*Tiempo de animación*/
+            width: 120px;
+        }
+        /*Acciones del cursor*/
+        main header div.menu ul li:hover{
+            background-color: #000000aa;
+            border-bottom: 4px solid yellow;
+            cursor: pointer;
+        }@media (max-width: 780px) {
+            main header div.menu ul li {
+                display: block;
+                width: 88%;
+            }
+        }
+        /* I M A G E N E S*/
+        main section.gallery div {
+            display: inline-block;
+            margin-top: 10px;
+            margin-left: 5px;
+        }
+        main section.gallery {
+            background-color: #00000066;
+            margin: 30px;
+            margin-top: 30px;
+            margin-left: 250px;
+            margin-right: 250px;
+            text-align: center;
+        }
+        
+        main section.gallery div h2{
+            margin-top: px;
+            background-color: #ffffff55;
+            margin: 0px;
+            height: 40%;
+            transition: 0.3s all ease-in;
+             
+            line-height: 4.5rem;
+        }
+        main section.gallery div:hover h2 {
+            background-color: #fffff999;
+            margin: 0px auto;
+            height: 55%;
+        }
+        main section.gallery div.gallery1 {
+            background: url(images/spriteweb.png);
+            height: 190px;
+            width: 250px;
+            background-position: -520px -10px;
+            margin: 10px;
+            text-align: center; 
+            border: 2px solid white;
+        }
+        main section.gallery div.gallery2 {
+            background: url(images/spriteweb.png);
+            height: 190px;
+            width: 250px;
+            background-position: -520px -10px;
+            margin: 10px;
+            text-align: center;
+            border: 2px solid white;
+        }
+        main section.gallery div.gallery3 {
+            background: url(images/spriteweb.png);
+            height: 190px;
+            width: 250px;
+            background-position: -520px -10px;
+            margin: 10px;
+            text-align: center;
+            border: 2px solid white;
+
+            
+        }
+
+        /*C O N T E N I D O*/
+        main section.content {
+            background-color: #00000066;
+            margin: 40px auto;
+            padding: 20px;
+            width: 908px;
+        }
+        main section.content article{
+            background-color: #ffffff;
+            margin-bottom: 10px;
+            padding: 20px;
+            transition: all 0.2s ease-in;
+        }
+        main section.content article:last-child{
+            margin-bottom: 0;
+        }
+        main section.content article div {
+            display: inline-block;
+            vertical-align: top;
+        }
+        main section.content article div.image1,
+        main section.content article div.image2{
+            height: 150px;
+            width: 200px;
+        }
+        main section.content article div.text{
+            font-family: Verdana;
+            text-align:  justify;
+            line-height: 1.5rem;
+            width: 400px;
+        }
+        main section.content article:hover{
+            border-bottom: 4px solid rgb(199, 199, 5);
+            cursor: pointer;
+            color: #17a053;
+            transform: scale(1.02);
+        }@media (max-width: 780px) {
+            main header div.menu ul li {
+                display: block;
+                width: 88%;
+            }
+        } 
+        main section.content article div.image1{
+            background: url(images/spriteweb.png) no-repeat -225px -500px;
+            transition: all 0.8s ease-in;
+        }
+        main section.content article div.image2{
+            background: url(images/spriteweb.png) no-repeat -0px -225px;
+            transition: all 0.8s ease-in;
+        }
+        main section.content article div.image1:hover{
+            transform: rotate(360deg);
+        }
+        main section.content article div.image2:hover{
+            transform: rotate(360deg);
+        }
+        main footer.end {
+            display: inline-block;
+            background-color: #fff;
+            height: 400px;
+            width: 908px;
+            margin-left: 300px;
+            margin-bottom: 100px;
+            transition: all 0.8s ease-in;
+        }
+        main footer.end:hover{
+            transform: scale(1.1);
+        }
+        main footer.end div.logofinal {
+            background: url(images/spriteweb.png) no-repeat -500px -420px;
+            height: 200px;
+            width: 500px;
+            margin-left: 325px;
+            transition: all 0.8s ease-in;
+        }
+        main footer.end div.logofinal:hover{
+            transform: rotatex(360deg);
+            cursor: pointer;
+        }
+        main footer.end ul li{
+            font-family: 'Times New Roman', Times, serif;
+            margin-left: 5px;
+            border-bottom: 4px solid white;
+            color: rgb(0, 0, 0);
+            display: inline-block;
+            margin-top: 4px;
+            padding: 10px 20px;
+            font-family: verdana;
+            text-transform: uppercase;
+            text-align: center;
+            transition: all 0.3s ease-in; /*Tiempo de animación*/
+            width: 120px;
+        }
+        main footer.end ul li:hover{
+            border-bottom: 4px solid #17a053;
+            cursor: pointer;
+            transform: translate(0px, -10px);
+        }
+
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <div class="logo"></div>
+            <div class="menu">
+               <ul>
+                <li>Home</li>
+                <li>About</li>
+                <li>Portfolio</li>
+                <li>Services</li>
+                <li>Contact</li>
+               </ul>
+            </div>
+            
+        </header>
+        <section class="gallery">
+            <div class="gallery1">
+                <h2>Sprite 1</h2>
+            </div>
+                
+            <div class="gallery2">
+                 <h2>Sprite 2</h2>
+            </div>
+
+            <div class="gallery3">
+                <h2>Sprite 3</h2>
+            </div>
+            
+        </section>
+        <section class="content">
+            <article>
+                <div class="image1"></div>
+                <div class="text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis ipsa assumenda eum culpa ea sed at dolorem ad magnam dignissimos placeat ut non, iusto voluptatem numquam, soluta neque accusantium doloremque!</div>
+                <div class="image2"></div>
+            </article>
+            <article>
+                <div class="image1"></div>
+                <div class="text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis ipsa assumenda eum culpa ea sed at dolorem ad magnam dignissimos placeat ut non, iusto voluptatem numquam, soluta neque accusantium doloremque!</div>
+                <div class="image2"></div>
+            </article>
+            <article>
+                <div class="image1"></div>
+                <div class="text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis ipsa assumenda eum culpa ea sed at dolorem ad magnam dignissimos placeat ut non, iusto voluptatem numquam, soluta neque accusantium doloremque!</div>
+                <div class="image2"></div>
+            </article>
+        </section>
+        <footer class="end">
+            <div class="logofinal"></div>
+               <ul>
+                <li>Home</li>
+                <li>About</li>
+                <li>Portfolio</li>
+                <li>Services</li>
+                <li>Contact</li>
+               </ul>
+            </div>
+        </footer>
+    </main>
+    
+</body>
+</html>
