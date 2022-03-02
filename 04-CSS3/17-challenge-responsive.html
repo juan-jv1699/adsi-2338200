@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>17-challenge-responsive</title>
+    <link rel="stylesheet" href="css/master.css">
+</head>
+<style>
+    *{
+        transition: all 0.3s ease-in; /*Tiempo de animación*/
+    }
+    main {
+        margin: 0 auto;
+    }
+    div.logo {
+        background: url(imgs/17-challenge/opm-logo.png);
+        width: 1600px;
+        height: 420px;
+    }
+    section.seasons {
+        border: solid red 2px;
+    }
+    section.seasons div {
+        margin: 0 auto;
+        display: inline-block;
+        width: 360px;
+        height: 300px;
+        position: relative;
+    }
+    section.seasons div.img1 {
+        background: url(imgs/17-challenge/opm1.jpg) 480px 350px;
+    }
+    section.seasons div.img2 {
+        background: url(imgs/17-challenge/opm2.jpg) 480px 350px;   
+    }
+    section.seasons div h2{
+        background-color: rgba(0, 0, 0, 0.363);
+        border-bottom: 4px solid rgb(255, 255, 255);
+        color: rgb(236, 124, 31);
+        font-family: verdana;
+        width: 360px;
+        margin-top: 260px;
+        position: absolute;
+    }
+    section.seasons div:hover h2{
+        height: 40px;
+    }
+    section.content div.personajes {
+        background-position: relative;
+        height: 470px;
+        width: 350px relative;
+        margin-top: 50px;
+    }
+    section.content div.personajes ul, section.content div.personajes div{
+        display: inline-block;
+        vertical-align: top;
+        height: 470px;
+        width: 500px;
+    }
+    section.content div.personajes.saitama ul.saitama{
+        background: url(imgs/17-challenge/opm3.jpg) 500px 470px;
+        border: solid red 2px;
+        height: 470px;
+        width: 500px;
+    }
+    section.content div.personajes.saitama div.text{
+        border: solid red 2px;
+        height: 470px;
+        width: 900px;
+    }
+    section.content div.personajes div.text h3{
+        text-align: center;
+        font-size: 2.2rem;
+    }
+    section.content div.personajes div.text p{
+        font-size: 1.4rem;
+    }
+    section.content div.personajes.genos ul.genos{
+        background: url(imgs/17-challenge/opm3.jpg) 0px 470px;
+        height: 470px;
+        width: 500px;
+        margin-top: 100px;
+    }
+    section.content div.personajes.genos div.text{
+
+    }
+    
+</style>
+<body>
+    <main>
+        <header>
+            <h1><a href="index.html">⬅</a> 17-Challenge-responsive</h1>
+        </header>
+        <div class="logo"></div>
+        <section class="seasons">
+            <div class="img1">
+                <h2>OPM <small>(season 1)</small></h2>
+            </div>
+            <div class="img2">
+                <h2>OPM <small>(season 2)</small></h2>
+            </div>
+            <div class="img1">
+                <h2>OPM <small>(season 3)</small></h2>
+            </div>
+            <div class="img2">
+                <h2>OPM <small>(season 4)</small></h2>
+            </div>
+        </section>
+        <section class="content">
+            <div class="personajes saitama">
+                <ul class="saitama"></ul>
+                <div class="text">
+                    <h3>SAITAMA SENSEI</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, reprehenderit odit mollitia exercitationem aspernatur obcaecati quas sit animi atque cupiditate praesentium blanditiis tempore rem commodi temporibus ab aperiam? Est, eveniet?</p>
+                </div>
+            </div>
+            <div class="personajes genos">
+                <ul class="genos"></ul>
+                <div class="text">
+                    <h3>GENOS</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, reprehenderit odit mollitia exercitationem aspernatur obcaecati quas sit animi atque cupiditate praesentium blanditiis tempore rem commodi temporibus ab aperiam? Est, eveniet?</p>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
