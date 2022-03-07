@@ -4,126 +4,199 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>17-challenge-responsive</title>
+    <title>Challenge Responsive </title>
     <link rel="stylesheet" href="css/master.css">
+    	<style>
+		* {
+			transition: all 0.5s;
+		}
+        
+		body {
+            background-color: black;
+            color: aliceblue;
+			font: 16px AgencyFB;
+		}
+		main {
+			margin: 32px auto;
+			width: 1280px;
+		}
+		header div.logo {
+			background: url(imgs/17-challenge/opm-logo.png) no-repeat center;
+			background-size: cover;
+			height: 270px;
+			transition: transform 0.5s ease-in;
+		}
+		header div.logo:hover {
+			transform: scale(1.1);
+			cursor: pointer;
+		}
+		
+		section.Menu {
+			margin-top: 40px;
+			margin-left: 30px ;
+		}
+		section.Menu div {
+			display: inline-block;
+			height: 280px;
+			margin-right: 28px;
+			position: relative;
+			width: 280px;
+		}
+		
+		section.Menu div.I1 {
+			background: url(imgs/17-challenge/opm1.jpg) no-repeat center;
+			background-size: cover;
+		}
+		section.Menu div.I2 {
+			background: url(imgs/17-challenge/opm2.jpg) no-repeat center;
+			background-size: cover;
+		}
+		section.Menu div h4 {
+			color: rgba(255,255,255, .8);
+			bottom: 0px;
+			font-size: 1.4em;
+			height: 20px;
+			margin: 0px;
+			padding: 20px;
+			position: absolute;
+			text-align: center;
+			width: 240px;
+			transition: all 0.4s ease-in;
+		}
+        /* A N I M A C I O N */
+		section.Menu div:hover {
+			cursor: pointer;
+            border: 0.5px solid red;
+		}
+		section.Menu div:hover h4 {
+			height: 60px;
+		}
+		section {
+			margin-top: 40px;
+		}
+		section article {
+			border: 1px dotted red;
+			height: 280px;
+			position: relative;
+			margin: 50px 28px;
+		}
+		section article figure {
+			background: url(imgs/17-challenge/opm3.jpg) no-repeat;
+			background-size: cover;
+			height: 280px;
+			margin: 0px auto;
+			width: 280px;
+			border: 2PX dotted red;
+		}
+		section article.art1 figure {
+			background-position: right center;
+		}
+		section article figure,
+		section article div {
+			display: inline-block;
+			vertical-align: top;
+		}
+		section article div {
+			margin-left: 25px;
+			width: 600px;
+		}
+		section article div h2 {
+			color: aliceblue;
+			font-size: 2em;
+			margin: 20px 0px;
+		}
+		section article div p {
+			color: aliceblue;
+			
+		}
+        /* R E S P O N S I V E */
+		@media (max-width: 1290px) {
+			main {
+				width: 680px;
+			}
+			header div.logo {
+				background-size: 120%;
+			}
+			section.Menu div {
+				margin: 20px;
+			}
+			section article div {
+				width: 280px;
+			}
+			section article div h2 {
+				font-size: 1.4em;
+			}
+			section article div p {
+				overflow: hidden;
+				height: 180px;
+			}
+		}
+		@media (max-width: 690px) {
+			main {
+				width: 480px;
+			}
+			section.Menu div {
+				display: block;
+				margin: 28px auto !important;
+			}
+			section article {
+				height: 560px;
+				margin: 40px auto;
+				width: 280px;
+			}
+			section article figure,
+			section article div {
+				display: block;
+			}
+			section article div {
+				margin-left: 0px;
+				width: 280px;
+			}
+			
+		}
+		/*Final Stilo*/
+	</style>
 </head>
-<style>
-    *{
-        transition: all 0.3s ease-in; /*Tiempo de animación*/
-    }
-    main {
-        margin: 0 auto;
-    }
-    div.logo {
-        background: url(imgs/17-challenge/opm-logo.png);
-        width: 1600px;
-        height: 420px;
-    }
-    section.seasons {
-        border: solid red 2px;
-    }
-    section.seasons div {
-        margin: 0 auto;
-        display: inline-block;
-        width: 360px;
-        height: 300px;
-        position: relative;
-    }
-    section.seasons div.img1 {
-        background: url(imgs/17-challenge/opm1.jpg) 480px 350px;
-    }
-    section.seasons div.img2 {
-        background: url(imgs/17-challenge/opm2.jpg) 480px 350px;   
-    }
-    section.seasons div h2{
-        background-color: rgba(0, 0, 0, 0.363);
-        border-bottom: 4px solid rgb(255, 255, 255);
-        color: rgb(236, 124, 31);
-        font-family: verdana;
-        width: 360px;
-        margin-top: 260px;
-        position: absolute;
-    }
-    section.seasons div:hover h2{
-        height: 40px;
-    }
-    section.content div.personajes {
-        background-position: relative;
-        height: 470px;
-        width: 350px relative;
-        margin-top: 50px;
-    }
-    section.content div.personajes ul, section.content div.personajes div{
-        display: inline-block;
-        vertical-align: top;
-        height: 470px;
-        width: 500px;
-    }
-    section.content div.personajes.saitama ul.saitama{
-        background: url(imgs/17-challenge/opm3.jpg) 500px 470px;
-        border: solid red 2px;
-        height: 470px;
-        width: 500px;
-    }
-    section.content div.personajes.saitama div.text{
-        border: solid red 2px;
-        height: 470px;
-        width: 900px;
-    }
-    section.content div.personajes div.text h3{
-        text-align: center;
-        font-size: 2.2rem;
-    }
-    section.content div.personajes div.text p{
-        font-size: 1.4rem;
-    }
-    section.content div.personajes.genos ul.genos{
-        background: url(imgs/17-challenge/opm3.jpg) 0px 470px;
-        height: 470px;
-        width: 500px;
-        margin-top: 100px;
-    }
-    section.content div.personajes.genos div.text{
-
-    }
-    
-</style>
 <body>
-    <main>
-        <header>
-            <h1><a href="index.html">⬅</a> 17-Challenge-responsive</h1>
-        </header>
-        <div class="logo"></div>
-        <section class="seasons">
-            <div class="img1">
-                <h2>OPM <small>(season 1)</small></h2>
-            </div>
-            <div class="img2">
-                <h2>OPM <small>(season 2)</small></h2>
-            </div>
-            <div class="img1">
-                <h2>OPM <small>(season 3)</small></h2>
-            </div>
-            <div class="img2">
-                <h2>OPM <small>(season 4)</small></h2>
-            </div>
-        </section>
-        <section class="content">
-            <div class="personajes saitama">
-                <ul class="saitama"></ul>
-                <div class="text">
-                    <h3>SAITAMA SENSEI</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, reprehenderit odit mollitia exercitationem aspernatur obcaecati quas sit animi atque cupiditate praesentium blanditiis tempore rem commodi temporibus ab aperiam? Est, eveniet?</p>
-                </div>
-            </div>
-            <div class="personajes genos">
-                <ul class="genos"></ul>
-                <div class="text">
-                    <h3>GENOS</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa, reprehenderit odit mollitia exercitationem aspernatur obcaecati quas sit animi atque cupiditate praesentium blanditiis tempore rem commodi temporibus ab aperiam? Est, eveniet?</p>
-                </div>
-            </div>
-        </section>
-    </main>
+	<main>
+		<header>
+			<div class="logo"></div>
+		</header>
+		<section class="Menu">
+			<div class="Temp I1">
+				<h4>OPM (season 1)</h4>
+			</div>
+			<div class="Temp I2">
+				<h4>OPM (season 2)</h4>
+			</div>
+			<div class="Temp I1">
+				<h4>OPM (season 3)</h4>
+			</div>
+			<div class="Temp I2">
+				<h4>OPM (season 4)</h4>
+			</div>
+		</section>
+		<section>
+			<article class="art1">
+				<figure></figure>
+				<div class="content">
+					<h3> SAITAMA SENSEI </h3>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia aspernatur quam reprehenderit beatae explicabo porro excepturi sunt, totam obcaecati culpa nisi quasi qui earum sint nam. Incidunt repellat sequi recusandae non dolorem, dolor ex minus eius ad veritatis earum, dicta vitae odit laudantium saepe hic et quam nobis maxime quod maiores fugit laboriosam magni amet. Labore laudantium dignissimos, laboriosam quisquam sequi beatae itaque officia quos praesentium distinctio doloremque, aut quae ex, veniam sit eaque accusamus. Sapiente quas quae amet quidem iusto nam ipsum nihil.
+					</p>
+				</div>
+			</article>
+			<article class="art2">
+				<figure></figure>
+				<div class="content">
+					<h3> GENOS </h3>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia aspernatur quam reprehenderit beatae explicabo porro excepturi sunt, totam obcaecati culpa nisi quasi qui earum sint nam. Incidunt repellat sequi recusandae non dolorem, dolor ex minus eius ad veritatis earum, dicta vitae odit laudantium saepe hic et quam nobis maxime quod maiores fugit laboriosam magni amet. Labore laudantium dignissimos, laboriosam quisquam sequi beatae itaque officia quos praesentium distinctio doloremque, aut quae ex, veniam sit eaque accusamus. Sapiente quas quae amet quidem iusto nam ipsum nihil.
+					</p>
+				</div>
+				
+			</article>
+		</section>
+	</main>
 </body>
 </html>
