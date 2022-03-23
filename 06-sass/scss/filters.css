@@ -1,0 +1,41 @@
+figure {
+  cursor: pointer;
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+
+figure:hover {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+}
+
+figure:hover.filter1 {
+  -webkit-filter: grayscale(1);
+          filter: grayscale(1);
+}
+
+figure:hover.filter2 {
+  -webkit-filter: blur(4px);
+          filter: blur(4px);
+}
+
+figure:hover.filter3 {
+  -webkit-filter: opacity(0.5);
+          filter: opacity(0.5);
+}
+
+figure:hover.filter4 {
+  -webkit-filter: sepia(0.8);
+          filter: sepia(0.8);
+}
+
+figure:hover.filter5 {
+  -webkit-filter: invert(1);
+          filter: invert(1);
+}
+
+figure:hover.filter6 {
+  -webkit-filter: brightness(2);
+          filter: brightness(2);
+}
+/*# sourceMappingURL=filters.css.map */

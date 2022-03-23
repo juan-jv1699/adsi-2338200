@@ -1,0 +1,32 @@
+doctype
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        title Challenge PUG
+    body
+        h1 Challenge PUG (Colors)
+        div.deg1 
+        div.deg2 
+        div.deg3  
+        div.deg4 
+        div.deg5  
+        div.deg6  
+        div.deg7  
+        div.deg8  
+        div.deg9  
+        div.deg10  
+        
+        //-tr 
+        //-table(width="400px")
+            - var i = 1
+            - var r = 250
+            - var g = 250
+            - var b = 250
+            while i <= 10
+                tr 
+                    td(style="bgc: rgb()"+r+","+g+","+b+"); heigth: 40px"
+                    - i++
+                    - r-=25
+                    - g-=25
+
+        
