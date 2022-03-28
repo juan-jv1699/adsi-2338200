@@ -2,10 +2,12 @@
 body{
     background: url(../images/BG-JS.png)-700px -350px;
     background-size: contain;
+    color: rgba(255, 255, 255, 0.616);
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    font-family: 'Poppins';
 }
 main{
     background-color: #00000062;
@@ -14,9 +16,41 @@ main{
     height: 700px;
     width: 420px;
 }
-h1{
+header h1{
     color: #ffff00;
     text-align: center;
+    font-size: 2.4rem;
+}
+h2, h3, h4{ 
+    text-align: center;
+    border-bottom: 2px dotted #ffffff99;
+    padding-bottom: 5px;
+    margin: 0px 40px;
+}
+header {
+    position: relative;
+}
+header h1{
+    color: #ff8800;
+    text-align: center;
+    font-size: 2rem;
+}
+header a:link,
+header a:visited{
+    color:#ff8800;
+    display: block;
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    float: left;
+    border-radius: 50%;
+    transition: all 0.3s ease-in;
+}
+header a:hover{
+    transform: translateX(-7px) scale(1.1);
+    background-color: black;
+    border-radius: 50%;
+    border: solid 2px #ffff00;
 }
 nav{
     display: flex;
