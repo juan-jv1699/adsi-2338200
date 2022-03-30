@@ -7,6 +7,15 @@
     <title>Get Elemments</title>
     <link rel="stylesheet" href="css/menu.css">
 </head>
+<style>
+    p{
+        padding-left: 20px;
+    }
+    button{
+        margin-top: 20px;
+        border: none;
+    }
+</style>
 <body>
     <main>
         <header>
@@ -26,18 +35,36 @@
                 <li>Pikachu</li>
             </ul>
             <h3 id="nli"></h3>
+            <p class="paragraph"> lorem ipsum dolor</p>
+            <p class="paragraph"> lorem ipsum dolor</p>
+            <p class="paragraph"> lorem ipsum dolor</p>
+            <h3 id="np"></h3>
+
+            <button class="btn first">Button 1</button>
+            <button class="btn">Button 2</button>
+            <button class="btn">Button 3</button>
         </section>
         </nav>
         <script>
             //query selector
             //get elementByid
+            let np=document.getElementById('np')
             let nli=document.getElementById('nli')
-            let year=document.getElementById('year');
+            let year=document.getElementById('year')
             let ndate=new Date();
-            year.innerText="Current Date : \n"+ ndate.getFullYear();
+            year.innerText="Current Date : \n"+ ndate.getFullYear()
             //Get ElementsByTagName
-            let lis=document.getElementsByTagName('li');
-            nli.innerText='There are: '+lis.length+' list elements\n'+'last element value is: '+lis[lis.length-1].textContent;
+            let lis=document.getElementsByTagName('li')
+            nli.innerText='There are: '+lis.length+' list elements\n'+'last element value is: '+lis[lis.length-1].textContent
+            //Get ElementsByName
+            let nps=document.getElementsByClassName('paragraph')
+            nps[nps.length-1].style.color='red';
+            np.innerText='There are: '+nps.length+' <p> whit class paragraph'
+            //Query selector(s)
+            let btn=document.querySelector('button.first')
+            let btns=document.querySelectorAll('button.btn')
+            btn.style.marginLeft='120px'
+            btns[1].style.backgroundColor='orange'
 
         </script>
     </main>
