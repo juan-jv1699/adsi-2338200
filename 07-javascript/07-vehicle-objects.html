@@ -12,13 +12,7 @@
             background: url(images/vehicleObject/lightMode/bg-lightMode.svg);
             border: none;
         }
-        main.darkMode{
-            background: url(images/vehicleObject/darkMode/bg-darkMode.svg);
-            border: none;
-        }
-        main.darkMode button.darkMode  {
-            background: url(images/vehicleObject/darkMode/btn-lightMode.svg);
-        }
+        
         header a:link, header a:visited {
             color: E9EE00;
             top: 15px;
@@ -27,28 +21,15 @@
         body {
             position: relative;
         }
-        body button.darkMode {
-            background: url(images/vehicleObject/lightMode/btn-darkMode.svg);
-            border: none;
-            cursor: pointer;
-            height: 50px;
-            position: absolute;
-            width: 50px;
-            height: 50px;
-            left: 1000px;
-            transition: transform 1.2s ease;
-            top: 100px;
-            text-indent: -9999px;
-        }
-        body button.darkMode:hover {
-            transform: scale(1.2) rotate(360deg);
-        }
+        
         body ul.attributes {
             color: black;
             position: absolute;
             list-style: none;
-            top: 210px;
-            left: 660px;
+            top: 245px;
+            left: 820px;
+            margin: 0 auto;
+            margin-left: center;
             /**/
             display: flex;
             justify-content: center;
@@ -60,33 +41,106 @@
         body ul.attributes li {
             text-transform: uppercase;
             text-align: center;
-            width: 100px;
+        }
+        body ul.attributes li.brand,
+        body ul.attributes li.refer{
+            position: relative;
+            top: -20px;
+            left: -80px;
         }
         body ul.attributes li.model,
         body ul.attributes li.color {
             position: relative;
-            top: 70px;
-            left: -380px;
+            top: 50px;
+            left: -425px;
         }
         figure.landscape {
-            background-color: rgb(255, 231, 126);
             border-radius: 10px;
+            position: relative;
+            width: 360px;
+            height: 280px;
+            right: 10px;
+            top: 160px;
+            overflow: hidden;
+        }
+        figure.landscape div{
+            position: absolute;
+        }
+
+        figure.landscape div.layer04{
+            background-image: url(images/vehicleObject/lightMode/capa\ 00-blue-sky.svg);
             position: absolute;
             width: 360px;
             height: 280px;
-            left: 639px;
-            top: 320px;
+            z-index: 1;
         }
+        figure.landscape div.layer03{
+            background-image: url(images/vehicleObject/lightMode/capa\ 01-sun.svg);
+            position: absolute;
+            height: 280px;
+            width: 1020px;
+            z-index: 2;
+        }
+        figure.landscape div.layer02{
+            background-image: url(images/vehicleObject/lightMode/capa\ 02-clouds.svg) ;
+            position: absolute;
+            width: 804px;
+            height: 102.43px;
+            z-index: 3;
+        }
+        figure.landscape div.layer01{
+            background-image: url(images/vehicleObject/lightMode/capa\ 03-mountains.svg) ;
+            position: absolute;
+            z-index: 4;
+            width: 1019px;
+            height: 187.5px;
+            top: 80px;
+        }
+        figure.landscape div.layer00{
+            background-image:url(images/vehicleObject/lightMode/capa\ 04-street.svg);
+            position: absolute;
+            z-index: 5;
+            width: 1017px;
+            height: 46px;
+            top: 235px;    
+        }
+        figure.landscape.move div.layer03{
+            animation: moveRigth 60s linear infinite;
+        }
+        figure.landscape.move div.layer02{
+            animation: moveRigth 15s linear infinite;
+        }
+        figure.landscape.move div.layer01{
+            animation: moveRigth 45s linear infinite;
+        }
+        figure.landscape.move div.layer00{
+            animation: moveRigth 10s linear infinite;
+        }
+        figure.landscape.stop div.layer00,
+        figure.landscape.stop div.layer01,
+        figure.landscape.stop div.layer02,
+        figure.landscape.stop div.layer03 {
+            animation-play-state: paused;
+        }
+        figure.landscape.reverse div.layer00,
+        figure.landscape.reverse div.layer01,
+        figure.landscape.reverse div.layer02,
+        figure.landscape.reverse div.layer03 {
+            animation-direction: reverse;
+        }
+                
         nav.changeVehicle{
             position: absolute;
-            top: 440px;
-            left: 654px;
+            top: 335px;
+            left: 660px;
             /*flex*/
             display: flex;
             flex-direction: row;
             align-items: flex-start;
             justify-content: space-between;
-            width: 410px;
+            width: 390px;
+            height: 280px;
+            overflow: hidden;
         }
         nav.changeVehicle button{
             border: none;
@@ -97,10 +151,18 @@
             cursor: pointer;
         }
         nav.changeVehicle button.Next{
+            position: relative;
+            top: 110px;
+            left: 15px;
             background: url(images/vehicleObject/lightMode/btn-prev.svg);
+            z-index: 5;
         }
         nav.changeVehicle button.Prev{
+            position: relative;
+            top: 110px;
+            left: -6px;
             background: url(images/vehicleObject/lightMode/btn-next.svg);
+            z-index: 5;
         }
         nav.changeVehicle button.Next:hover{
             transform: translate(10px) scale(1.2);
@@ -108,6 +170,7 @@
         nav.changeVehicle button.Prev:hover{
             transform: translate(-10px) scale(1.2);
         }
+        
         nav.controller {
 
             top: 620px;
@@ -176,14 +239,110 @@
         nav.controller button.forward:hover {
             transform: scale(1.2);
         }
-
-
-    </style>
+        /*dark mode*/
+        main.darkMode{
+            background: url(images/vehicleObject/darkMode/bg-darkMode.svg);
+            border: none;
+        }
+        main.darkMode button.darkMode  {
+            background: url(images/vehicleObject/darkMode/btn-lightMode.svg);
+        }
+        body button.darkMode {
+            background: url(images/vehicleObject/lightMode/btn-darkMode.svg);
+            border: none;
+            cursor: pointer;
+            height: 50px;
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            left: 1000px;
+            transition: transform 1.2s ease;
+            top: 100px;
+            text-indent: -9999px;
+        }
+        main.darkMode nav.changeVehicle button.Next{
+            background: url(images/vehicleObject/darkMode/btn-next-darkMode.svg);
+        }
+        main.darkMode nav.changeVehicle button.Prev{
+            background: url(images/vehicleObject/darkMode/btn-prev-darkMode.svg);
+        }
+        body button.darkMode:hover {
+            transform: scale(1.2) rotate(360deg);
+        }
+        body main.darkMode ul.attributes li {
+            color: rgb(255, 255, 255);
+        }
+        main.darkMode figure.landscape div.layer04{
+            background-image: url(images/vehicleObject/darkMode/sky-dark.svg);
+            position: absolute;
+            width: 360px;
+            height: 280px;
+            z-index: 1;
+        }
+        main.darkMode figure.landscape div.layer03{
+            background-image: url(images/vehicleObject/darkMode/capa\ 01-moon.svg);
+            position: absolute;
+            height: 280px;
+            width: 1020px;
+            z-index: 2;
+        }
+        main.darkMode figure.landscape div.layer02{
+            background-image: url(images/vehicleObject/darkMode/capa\ 02-clouds.svg) ;
+            position: absolute;
+            width: 804px;
+            height: 102.43px;
+            z-index: 3;
+        }
+        main.darkMode figure.landscape div.layer01{
+            background-image: url(images/vehicleObject/darkMode/capa\ 03-mountains.svg) ;
+            position: absolute;
+            z-index: 4;
+            width: 1019px;
+            height: 187.5px;
+            top: 80px;
+        }
+        main.darkMode figure.landscape div.layer00{
+            background-image:url(images/vehicleObject/darkMode/capa\ 04-street.svg);
+            position: absolute;
+            z-index: 5;
+            width: 1017px;
+            height: 46px;
+            top: 235px;    
+        } 
+        /*-----------------------------------------*/
+        body.principal img.image{
+            height: 65px;
+            width: 160px;
+            left: 50%;
+            transform: translateX(-50%);
+            position: relative;
+            margin: 0;
+            top: 450px;
+            z-index: 9; 
+        }
+        body.principal img.image.start {
+            /*animation car startEngine*/
+            animation: car-start 0.2s ease infinite;
+        }
+        
+        /* Animation */
+        @keyframes moveRigth{
+            0%{background-position:0;}
+            100%{background-position:-1020px;}
+        }
+        @keyframes car-start {
+            0%{top: 450px;}
+            50%{top: 449px;}
+            100%{top: 448px;}
+        }
+        
+        </style>
 
 
 </head>
 <body>
-    <main>
+    <section class="container">
+        <main>
         <header>
             <a href="index.html">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -192,6 +351,7 @@
             </a>
             
         </header>
+
         <body class="principal">
             <button class="darkMode">darkMode</button>
             <ul class="attributes">
@@ -200,7 +360,14 @@
                 <li class="model"></li>
                 <li class="color"></li>
             </ul>
-            <figure class="landscape"></figure>
+            <img class="image" src="" alt="">
+            <figure class="landscape">
+                <div class="layer00"></div>
+                <div class="layer01"></div>
+                <div class="layer02"></div>
+                <div class="layer03"></div>
+                <div class="layer04"></div>
+            </figure>
             <nav class="changeVehicle">
                 <button class="Prev">Prev</button>
                 <button class="Next">Next</button>
@@ -218,51 +385,118 @@
         </footer>
     </main>
     <script>
+        //variables
+        var cindex=0;
+        var engine= false;
+        var move= false;
         //elements
         const main=document.querySelector('main')
+        const lands=document.querySelector('figure.landscape')
         //buttons
         const btnDarkMode = document.querySelector('button.darkMode');
+        const btnPrev = document.querySelector('button.Prev');
+        const btnNext = document.querySelector('button.Next');
+        const btnStart = document.querySelector('button.turnOn');
+        const btnOff = document.querySelector('button.turnOff');
+        const btnstop = document.querySelector('button.stop');
+        const btnBack = document.querySelector('button.backward');
+        const btnFord = document.querySelector('button.forward');
         //attributes
         const brand=document.querySelector('li.brand');
         const refer=document.querySelector('li.refer');
         const model=document.querySelector('li.model');
         const color=document.querySelector('li.color');
+        const image=document.querySelector('img.image');
         const vehicle={
             attributes: [
-                {brand:'Honda', refer:'Civic', model:'Type R 2021', color:'blue', image:''},
-                {brand:'Mazda', refer:'RX7', model:'1999', color:'red', image:''},
-                {brand:'BMW', refer:'M3', model:'2004', color:'grey', image:''},
-                {brand:'Porsche', refer:'GTR 2', model:'2015', color:'grey', image:''},
+                {brand:'Honda', refer:'Civic', model:'Type R 2021', color:'blue', image:'images/vehicleObject/car01.png'},
+                {brand:'Mazda', refer:'RX7', model:'1999', color:'red', image:'images/vehicleObject/car02.png'},
+                {brand:'BMW', refer:'M3', model:'2004', color:'grey', image:'images/vehicleObject/car03.png'},
+                {brand:'Porsche', refer:'GTR 2', model:'2015', color:'grey', image:'images/vehicleObject/car04.png '},
             ],
             //methods
-            showAttributes: function() {
-                brand.innerText=this.attributes[0].brand
-                refer.innerText=this.attributes[0].refer
-                refer.innerText=this.attributes[0].model
-                refer.innerText=this.attributes[0].color
+            showAttributes: function(index) {
+                brand.innerText=this.attributes[index].brand
+                refer.innerText=this.attributes[index].refer
+                model.innerText=this.attributes[index].model
+                color.innerText=this.attributes[index].color
+                image.setAttribute('src', this.attributes[index].image)
+
             },
             darkMode: function() {
                 main.classList.toggle('darkMode')
             },
             start: function() {
-                alert('Start')
+                if (!engine) {
+                    image.classList.add('start');
+                    engine=true;
+                }
+            },
+            off: function() {
+                if(engine && !move) {
+                    image.classList.remove('start');
+                    engine=false;
+                }  
             },
             forWard: function() {
-                alert('Forward')
+                if(engine && !move){
+                    lands.classList.remove('stop');
+                    lands.classList.remove('reverse');
+                    lands.classList.add('move');
+                    move=true;
+                }
             },
             stop: function() {
-                alert('stop')
+                if(engine && move){
+                    lands.classList.add('stop');
+                    move=false;
+                }
+                
             },
             backWard: function() {
-                alert('backWard')
+                if(engine && !move){
+                    lands.classList.remove('stop');
+                    lands.classList.add('reverse');
+                    lands.classList.add('move');
+                    move=true;
+                }
             }  
         }
         //-------
-        vehicle.showAttributes()
+        vehicle.showAttributes(0)
         // Actions
         btnDarkMode.onclick=()=>{
             vehicle.darkMode()
         }
+        btnPrev.onclick=()=>{
+            if(cindex>0){
+                cindex--
+                vehicle.showAttributes(cindex)
+            }
+            
+        }
+        btnNext.onclick=()=>{
+            if(cindex<(vehicle.attributes.length-1)){
+                cindex++
+                vehicle.showAttributes(cindex)
+            }
+        }
+        btnStart.onclick=()=>{
+            vehicle.start();
+        }
+        btnOff.onclick=()=>{
+            vehicle.off();
+        }
+        btnstop.onclick=()=>{
+            vehicle.stop();
+        }
+        btnBack.onclick=()=>{
+            vehicle.backWard();
+        }
+        btnFord.onclick=()=>{
+            vehicle.forWard();
+        }
     </script>
+    </section>
 </body>
 </html>
