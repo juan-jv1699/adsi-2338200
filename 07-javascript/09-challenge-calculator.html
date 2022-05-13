@@ -179,12 +179,12 @@
     </main>
     <script>
         //value display
-        const display = document.querySelector('input.value')
+        var display = document.querySelector('input.value')
 
         //
         const back = document.querySelector('button.back')
         const clear = document.querySelector('button.btn-clear')
-        const equal = document.querySelector('button.btn-equal')
+        const btnigual = document.querySelector('button.btn-equal')
 
         const btnsNumbers = document.querySelectorAll('button[data-num]')
         const btnsOperators = document.querySelectorAll('button[data-opr]')
@@ -198,6 +198,9 @@
         }
         back.onclick=()=> {
             deletLastValue()
+        }
+        btnigual.onclick=()=> {
+            igual()
         }
         //activation click event in all numbers and operators
         for (let i = 0; i < btnsNumbers.length; i++) {
@@ -313,11 +316,7 @@
             operStatus=false
         }
         function igual() {
-            addToDisplay(5)
-            addToDisplay('+')
-            addToDisplay(5)
-            console.log('Hola Mundo')
-            console.log(eval(display.value))
+            display.value=(eval(display.value))
         }
 
         
