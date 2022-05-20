@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challenge-conditionals</title>
+    <link rel="stylesheet" href="css/menu.css">
+</head>
+<style>
+    /* modo apto */
+    main.apt {
+        background-color: brown;
+    }
+    main.apt div {
+        position: relative;
+        margin-left: 25px;
+        width: 372px;
+        height: 80px;
+    }
+    main.apt div.gender {
+        display: grid;
+        place-content: center;
+        background: url(images/challenge-conditionals/section-data-male.svg)no-repeat;
+        height: 235px;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: space-between;
+
+    }
+    main.apt div.gender button {
+        background: none;
+    }
+    main.apt div.name.apt {
+        display: grid;
+        place-content: center;
+        background: url(images/challenge-conditionals/section-status-apt.svg);
+        height: 300px;
+        width: 372;
+    }
+
+    /*--------------------------------------------*/
+
+    main {
+        background-color: rgba(47, 0, 255, 0.322);
+        margin: 0 auto;
+        padding: 0;
+        text-align: center;
+        position: absolute;
+    }
+    div {
+        position: relative;
+        margin-left: 25px;
+        width: 372px;
+        height: 80px;
+    }
+    div.gender {
+        display: flex;
+        background: url(images/challenge-conditionals/Gender.svg);
+        height: 235px;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    button {
+        padding: 25px;
+        margin-right: 25px;
+        margin-left: 25px;
+        border: none;
+        height: 160px;
+        width: 80px;
+        margin-top: 15px;
+        cursor: pointer;
+        transition: 0.5s all ease-in;
+    }
+    button:hover {
+        transform: scale(1.1) 
+    }
+    button.male {
+        justify-content: flex-start;
+        background: url(images/challenge-conditionals/btn-male.svg)no-repeat;
+    }
+    button.male:hover {
+        transform: translateX(50px);
+        background-color: rgba(95, 119, 255, 0.425); 
+        border-radius: 25px;
+    }
+    button.male.validate {
+        background: url(images/challenge-conditionals/btn-male-check.svg)no-repeat;
+        transform: translateX(50px);
+        background-color: rgba(95, 119, 255, 0.425); 
+        border-radius: 25px;
+        transition: none;
+    }
+    button.female {
+        margin-right: -10px;
+        justify-content: flex-end;
+        background:  url(images/challenge-conditionals/btn-female.svg)no-repeat;
+    }
+    button.female:hover{
+        transform: translateX(-50px);
+        background-color: rgba(255, 95, 228, 0.425); 
+        border-radius: 25px;
+    }
+    button.female.validate {
+        background: url(images/challenge-conditionals/btn-female-check.svg)no-repeat;
+        transform: translateX(-50px);
+        background-color: rgba(255, 95, 228, 0.425); 
+        border-radius: 25px;
+        transition: none;
+    }
+    div.name {
+        margin-left: auto;
+        position: relative;
+        display: inline-block;
+        margin-top: 10px;
+        height: 80px;
+        width: 372px;
+        background: url(images/challenge-conditionals/section-name.svg);
+    }
+    div.name input {
+        text-align: center;
+        border: none;
+        margin-top: 15px;
+        margin-left: 15px;
+        background-color: transparent;
+        height: 20px;
+        width: 280px;
+        outline: none;
+
+    }
+    div.name h5 {
+        text-align: left;
+        margin: 0 0;
+        color: black;
+        margin-left: 50px;
+        height: 20px;
+        width: 300px;
+    }
+    div.birthday {
+        margin-left: auto;
+        display: inline-block;
+        margin-top: 10px;
+        height: 80px;
+        width: 372px;
+        background: url(images/challenge-conditionals/section-birthday.svg);
+    }
+    div.birthday input {
+        text-align: center;
+        border: none;
+        margin-top: 15px;
+        margin-left: 15px;
+        background-color: transparent;
+        height: 20px;
+        width: 280px;
+        outline: none;
+    }
+    div.birthday h5 {
+        text-align: left;
+        margin: 0 0;
+        color: black;
+        margin-left: 50px;
+        height: 20px;
+        width: 300px;
+    }
+    div.end {
+        border-radius: 5px;
+        width: 372px;
+        height: 80px;
+        justify-content: center;
+    }
+    div.end button.eval {
+        background: url(images/challenge-conditionals/btn\ cosnulta.svg)no-repeat;
+        width: 161px;
+        height: 37px;
+        text-align: center;
+    }
+    div.end button.eval.return {
+        background: url(images/challenge-conditionals/btn-back.svg)no-repeat;
+        width: 161px;
+        height: 37px;
+        text-align: center;
+    }
+</style>
+<body>
+    <main>
+        <header>
+            <a href="index.html">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
+                  </svg>
+            </a>
+            <h1>Challenge</h1>
+        </header>
+        <section>
+            <div class="gender">
+                <button class="male"></button>
+                <button class="female"></button>
+            </div>
+            <div class="name">
+                <h5 class="formName"></h5>
+                <input type="text" class="name" placeholder="Ingrese su nombre aqui">
+            </div>
+            <div class="birthday">
+                <h5 class="formBirth"></h5>
+                <input type="date" class="date">
+            </div>
+            <div class="end">
+                <button class="eval"></button>
+            </div>
+        </section>
+        </nav>
+    </main>
+    <script>
+        //variables constantes
+        var activate = false
+        var date=false
+        var name=false
+        var btnConsultcheck=false
+        
+
+        var divName=document.querySelector('div.name')
+        var divBirthday=document.querySelector('div.birthday')
+        var divGender=document.querySelector('div.gender')
+        var btnMale=document.querySelector('button.male')
+        var btnFemale=document.querySelector('button.female')
+        var btnConsult=document.querySelector('button.eval')
+        var inpName=document.querySelector('input.name')
+        var inpDate=document.querySelector('input.date')
+        var menuTheme=document.querySelector('main')
+        var phargraphsName=document.querySelector('h5.formName')
+        var phargraphsBirth=document.querySelector('h5.formBirth')
+
+        //eventos
+        document.querySelector('div.name h5').innerHTML='Ingrese su nombre: '
+        document.querySelector('div.birthday h5').innerHTML='Ingrese su fecha de nacimiento: '
+        
+
+        //funciones
+        var alterHTML={
+            htmlname: function(){
+                var h5Name=document.createElement('h5')
+                divName.appendChild(h5Name)
+                h5Name.classList.add('formName')
+                h5Name.innerHTML='Ingrese su nombre: '
+                phargraphsName=h5Name
+                var inputName=document.createElement('input')
+                divName.appendChild(inputName)
+                inputName.setAttribute('type','text')
+                inputName.setAttribute('class','name')
+                inputName.setAttribute('placeholder','Ingrese su nombre aqui')
+                inpName=inputName
+            },
+            htmlbirthday: function(){
+                var divBirt=document.createElement('div')
+                divBirt.classList.add('name')
+                divGender.insertAdjacentElement("afterend", divBirt)
+                divBirthday=divBirt
+                var h5birth=document.createElement('h5')
+                divBirthday.appendChild(h5birth)
+                h5birth.classList.add('formBirth')
+                h5birth.innerHTML='Ingrese su fecha de nacimiento: '
+                phargraphsBirth=h5birth
+                var inputbirth=document.createElement('input')
+                divBirthday.appendChild(inputbirth)
+                inputbirth.setAttribute('type','date')
+                inputbirth.setAttribute('class','date')
+                inpDate=inputbirth
+            },
+            delethtml: function(){
+                divName.removeChild(inpName)
+                divName.removeChild(phargraphsName)
+                divBirthday.removeChild(inpDate)
+                divBirthday.removeChild(phargraphsBirth)
+                document.querySelector('section').removeChild(divBirthday)
+            }
+        }
+               
+        //buttons
+
+        /*boton ingresar y regresar*/
+        btnConsult.onclick=()=>{
+        if (btnConsultcheck==false) {
+                menuTheme.classList.toggle('apt')
+                btnConsult.classList.toggle('return')
+                alterHTML.delethtml()
+                btnConsultcheck=true
+                divName.classList.add('apt')
+        }
+        else if(btnConsultcheck==true) {
+                menuTheme.classList.toggle('apt')
+                btnConsult.classList.toggle('return')
+                alterHTML.htmlname()
+                alterHTML.htmlbirthday()
+                btnConsultcheck=false
+            
+        }
+    }
+
+        btnMale.onclick=()=>{
+            if(btnFemale.className != 'female validate'){
+                if (activate == false) {
+                btnMale.classList.toggle('validate')
+                activate=true
+                }
+                else {
+                btnMale.classList.toggle('validate')
+                activate=false
+                }
+            }
+            
+        }
+        btnFemale.onclick=()=>{
+            if(btnMale.className != 'male validate' ){
+                if (activate == false) {
+                    btnFemale.classList.toggle('validate')
+                    activate=true
+                }
+                else {
+                btnFemale.classList.toggle('validate')
+                activate=false
+                }
+            }
+        }
+
+
+    </script>
+</body>
+</html>
