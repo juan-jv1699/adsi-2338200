@@ -29,6 +29,7 @@
 
     }
     main.apt div.gender button {
+        display: none;
         background: none;
     }
     main.apt div.name.apt {
@@ -38,8 +39,81 @@
         height: 300px;
         width: 372;
     }
+    main.apt div.gender h1{
+        display: block;
+        transform: translateX(45px);
+        background-color: blue;
+        margin-left: 15px;
+        margin-top: auto;
+    }
+    main.apt div.gender h1.name{
+
+    }
+   
 
     /*--------------------------------------------*/
+    /*modo no apto*/
+    main.noapt {
+        background-color: rgb(61, 165, 42);
+    }
+    main.noapt div {
+        position: relative;
+        margin-left: 25px;
+        width: 372px;
+        height: 80px;
+    }
+    main.noapt div.gender {
+        display: grid;
+        place-content: center;
+        background: url(images/challenge-conditionals/section-data-male.svg)no-repeat;
+        height: 235px;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: space-between;
+
+    }
+    main.noapt div.gender button {
+        background: none;
+    }
+    main.noapt div.name.noapt {
+        display: grid;
+        place-content: center;
+        background: url(images/challenge-conditionals/section-status-noapt.svg)no-repeat;
+        height: 300px;
+        width: 372;
+    }
+    /*---------------------------------------------*/
+    /*modo no apto mujer*/
+    main.noapt.woman {
+        background-color: rgb(147, 42, 165);
+    }
+    main.noapt.woman div {
+        position: relative;
+        margin-left: 25px;
+        width: 372px;
+        height: 80px;
+    }
+    main.noapt.woman div.gender {
+        display: grid;
+        place-content: center;
+        background: url(images/challenge-conditionals/section-data-female.svg)no-repeat;
+        height: 235px;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: space-between;
+
+    }
+    main.noapt.woman div.gender button {
+        background: none;
+    }
+    main.noapt.woman div.name.noapt {
+        display: grid;
+        place-content: center;
+        background: url(images/challenge-conditionals/section-status-noapt.svg);
+        height: 300px;
+        width: 372;
+    }
+    /*---------------------------------------------*/
 
     main {
         background-color: rgba(47, 0, 255, 0.322);
@@ -213,9 +287,12 @@
     </main>
     <script>
         //variables constantes
+        var btnFemaleCheck=false
+        var btnMaleCheck=false
         var activate = false
-        var date=false
-        var name=false
+        var date
+        var name
+        var edad
         var btnConsultcheck=false
         
 
@@ -230,13 +307,22 @@
         var menuTheme=document.querySelector('main')
         var phargraphsName=document.querySelector('h5.formName')
         var phargraphsBirth=document.querySelector('h5.formBirth')
+        var genderH1=document.querySelector('h1.name')
+        var genderH2=document.querySelector('h1.date')
 
         //eventos
         document.querySelector('div.name h5').innerHTML='Ingrese su nombre: '
         document.querySelector('div.birthday h5').innerHTML='Ingrese su fecha de nacimiento: '
         
+        
 
         //funciones
+        function getEdad(){
+            var dateToday= new Date()
+            date=new Date(inpDate.value)
+            edad=dateToday.getFullYear()-date.getFullYear()
+            return edad
+        }
         var alterHTML={
             htmlname: function(){
                 var h5Name=document.createElement('h5')
@@ -254,7 +340,7 @@
             htmlbirthday: function(){
                 var divBirt=document.createElement('div')
                 divBirt.classList.add('name')
-                divGender.insertAdjacentElement("afterend", divBirt)
+                divName.insertAdjacentElement("afterend", divBirt)
                 divBirthday=divBirt
                 var h5birth=document.createElement('h5')
                 divBirthday.appendChild(h5birth)
@@ -268,11 +354,28 @@
                 inpDate=inputbirth
             },
             delethtml: function(){
+                
                 divName.removeChild(inpName)
                 divName.removeChild(phargraphsName)
                 divBirthday.removeChild(inpDate)
                 divBirthday.removeChild(phargraphsBirth)
                 document.querySelector('section').removeChild(divBirthday)
+            },
+            htmlData: function(){
+                name=inpName.value
+                var dataHead=document.createElement('h1')
+                dataHead.classList.add('name')
+                dataHead.innerHTML=name
+                divGender.insertAdjacentElement('afterbegin',dataHead)
+                date=new Date(inpName.value)
+                var dataDate=document.createElement('h1')
+                dataDate.classList.add('date')
+                dataDate.innerHTML=date
+                divGender.insertAdjacentElement('beforeend',dataDate)
+
+            },
+            htmlState: function(){
+
             }
         }
                
@@ -280,21 +383,72 @@
 
         /*boton ingresar y regresar*/
         btnConsult.onclick=()=>{
-        if (btnConsultcheck==false) {
-                menuTheme.classList.toggle('apt')
-                btnConsult.classList.toggle('return')
-                alterHTML.delethtml()
-                btnConsultcheck=true
-                divName.classList.add('apt')
+        if (activate==true && inpName.value.length!=0)
+        {
+            getEdad()
+            if (btnConsultcheck==false) {
+                if(btnMaleCheck==true){
+                    if(edad>=18){
+                        alert('mayor')
+                        menuTheme.classList.toggle('apt')
+                        btnConsult.classList.toggle('return')
+                        divName.classList.add('apt')
+                        alterHTML.delethtml()
+                        btnConsultcheck=true
+                    }
+                    else if(edad<18) {
+                        alert('menor')
+                        menuTheme.classList.toggle('noapt')
+                        btnConsult.classList.toggle('return')
+                        divName.classList.add('noapt')
+                        alterHTML.delethtml()
+                        btnConsultcheck=true
+                    }
+
+                }
+                else if(btnFemaleCheck==true){
+                        alert('mujer')
+                        menuTheme.classList.toggle('noapt')
+                        menuTheme.classList.toggle('woman')
+                        btnConsult.classList.toggle('return')
+                        divName.classList.add('noapt')
+                        alterHTML.delethtml()
+                        btnConsultcheck=true
+                }
+                
+            }
+            else if(btnConsultcheck==true) {
+                if(btnMaleCheck==true && edad<18){
+                    menuTheme.classList.toggle('noapt')
+                    btnConsult.classList.toggle('return')
+                    divName.classList.remove('noapt')
+                    alterHTML.htmlname()
+                    alterHTML.htmlbirthday()
+                    btnConsultcheck=false
+                    btnMaleCheck=false
+                }
+                if(btnFemaleCheck==true){
+                    menuTheme.classList.toggle('noapt')
+                    btnConsult.classList.toggle('return')
+                    divName.classList.remove('noapt')
+                    alterHTML.htmlname()
+                    alterHTML.htmlbirthday()
+                    btnConsultcheck=false
+                    btnFemaleCheck=false
+                }
+                else if (btnMaleCheck==true) {
+                    menuTheme.classList.toggle('apt')
+                    btnConsult.classList.toggle('return')
+                    divName.classList.remove('apt')
+                    alterHTML.htmlname()
+                    alterHTML.htmlbirthday()
+                    btnConsultcheck=false
+                }            
+            }
+        }else {
+            alert('porfavor rellene todos los campos')
         }
-        else if(btnConsultcheck==true) {
-                menuTheme.classList.toggle('apt')
-                btnConsult.classList.toggle('return')
-                alterHTML.htmlname()
-                alterHTML.htmlbirthday()
-                btnConsultcheck=false
-            
-        }
+        
     }
 
         btnMale.onclick=()=>{
@@ -302,10 +456,12 @@
                 if (activate == false) {
                 btnMale.classList.toggle('validate')
                 activate=true
+                btnMaleCheck=true
                 }
                 else {
                 btnMale.classList.toggle('validate')
                 activate=false
+                btnMaleCheck=false
                 }
             }
             
@@ -315,10 +471,12 @@
                 if (activate == false) {
                     btnFemale.classList.toggle('validate')
                     activate=true
+                    btnFemaleCheck=true
                 }
                 else {
                 btnFemale.classList.toggle('validate')
                 activate=false
+                btnFemaleCheck=false
                 }
             }
         }
