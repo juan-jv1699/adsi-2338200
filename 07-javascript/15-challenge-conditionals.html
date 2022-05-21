@@ -39,15 +39,23 @@
         height: 300px;
         width: 372;
     }
-    main.apt div.gender h1{
+    main.apt div.gender p{
+        transform: translate(70px,-40px);
         display: block;
-        transform: translateX(45px);
-        background-color: blue;
         margin-left: 15px;
         margin-top: auto;
+        color: black;
     }
-    main.apt div.gender h1.name{
-
+    main.apt div.gender a.name{
+        transform: translate(80px,-40px);
+        color: black;
+    }
+    main.apt div.name p{
+        color: black;
+        width: 150px;
+        place-content: left;
+        left: 600px;
+        transform: translate(-100px,25px);
     }
    
 
@@ -82,6 +90,24 @@
         height: 300px;
         width: 372;
     }
+    main.noapt div.gender p{
+        transform: translate(90px,-200px);
+        display: block;
+        margin-left: 15px;
+        margin-top: auto;
+        color: black;
+    }
+    main.noapt div.gender a.name{
+        transform: translate(80px,-40px);
+        color: black;
+    }
+    main.noapt div.name p{
+        color: black;
+        width: 150px;
+        place-content: left;
+        left: 600px;
+        transform: translate(-100px,25px);
+    }
     /*---------------------------------------------*/
     /*modo no apto mujer*/
     main.noapt.woman {
@@ -112,6 +138,24 @@
         background: url(images/challenge-conditionals/section-status-noapt.svg);
         height: 300px;
         width: 372;
+    }
+    main.noapt.woman div.gender p{
+        transform: translate(90px,-200px);
+        display: block;
+        margin-left: 15px;
+        margin-top: auto;
+        color: black;
+    }
+    main.noapt.woman div.gender a.name{
+        transform: translate(80px,-40px);
+        color: black;
+    }
+    main.noapt.woman div.name p{
+        color: black;
+        width: 150px;
+        place-content: left;
+        left: 600px;
+        transform: translate(-100px,25px);
     }
     /*---------------------------------------------*/
 
@@ -268,7 +312,7 @@
         </header>
         <section>
             <div class="gender">
-                <button class="male"></button>
+                <button class="male"></button>  
                 <button class="female"></button>
             </div>
             <div class="name">
@@ -354,29 +398,45 @@
                 inpDate=inputbirth
             },
             delethtml: function(){
-                
                 divName.removeChild(inpName)
                 divName.removeChild(phargraphsName)
                 divBirthday.removeChild(inpDate)
                 divBirthday.removeChild(phargraphsBirth)
                 document.querySelector('section').removeChild(divBirthday)
             },
-            htmlData: function(){
+            htmlStateCreate: function(){
+                getEdad()
                 name=inpName.value
-                var dataHead=document.createElement('h1')
+                var dataHead=document.createElement('p')
                 dataHead.classList.add('name')
-                dataHead.innerHTML=name
-                divGender.insertAdjacentElement('afterbegin',dataHead)
+                dataHead.innerHTML='Su nombre es: '+name
+                divGender.appendChild(dataHead)
+                var dataHead2=document.createElement('p')
+                dataHead2.classList.add('edad')
+                dataHead2.innerHTML='Su edad es: '+edad
+                divGender.appendChild(dataHead2)
+                if(edad>=18 && btnMaleCheck==true){
                 date=new Date(inpName.value)
-                var dataDate=document.createElement('h1')
-                dataDate.classList.add('date')
-                dataDate.innerHTML=date
-                divGender.insertAdjacentElement('beforeend',dataDate)
-
+                var stateF=document.createElement('p')
+                stateF.classList.add('state')
+                divName.appendChild(stateF)
+                stateF.innerHTML="<a class='state'>"+"usted se encuentra habilitado "+"<a/>"+"<br>"+"<h1>"+"DEBE IR A LA GUERRA"+"<h1/>"    
+                }
+                else {
+                date=new Date(inpName.value)
+                var stateF=document.createElement('p')
+                stateF.classList.add('state')
+                divName.appendChild(stateF)
+                stateF.innerHTML="<a class='state'>"+"usted no se encuentra habilitado "+"<a/>"+"<br>"+"<h1>"+" NO DEBE IR A LA GUERRA"+"<h1/>"    
+                }    
             },
-            htmlState: function(){
+            htmlStateDelete: function(){
+                divGender.removeChild(document.querySelector('p.name'))
+                divGender.removeChild(document.querySelector('p.edad'))
+                divName.removeChild(document.querySelector('p.state'))
+                }
 
-            }
+            
         }
                
         //buttons
@@ -387,6 +447,7 @@
         {
             getEdad()
             if (btnConsultcheck==false) {
+                alterHTML.htmlStateCreate()
                 if(btnMaleCheck==true){
                     if(edad>=18){
                         alert('mayor')
@@ -418,6 +479,8 @@
                 
             }
             else if(btnConsultcheck==true) {
+
+                alterHTML.htmlStateDelete()
                 if(btnMaleCheck==true && edad<18){
                     menuTheme.classList.toggle('noapt')
                     btnConsult.classList.toggle('return')
@@ -426,15 +489,7 @@
                     alterHTML.htmlbirthday()
                     btnConsultcheck=false
                     btnMaleCheck=false
-                }
-                if(btnFemaleCheck==true){
-                    menuTheme.classList.toggle('noapt')
-                    btnConsult.classList.toggle('return')
-                    divName.classList.remove('noapt')
-                    alterHTML.htmlname()
-                    alterHTML.htmlbirthday()
-                    btnConsultcheck=false
-                    btnFemaleCheck=false
+                    btnMale.classList.toggle('validate')
                 }
                 else if (btnMaleCheck==true) {
                     menuTheme.classList.toggle('apt')
@@ -443,7 +498,18 @@
                     alterHTML.htmlname()
                     alterHTML.htmlbirthday()
                     btnConsultcheck=false
+                    btnMale.classList.toggle('validate')
                 }            
+                else if(btnFemaleCheck==true){
+                    menuTheme.classList.toggle('noapt')
+                    btnConsult.classList.toggle('return')
+                    divName.classList.remove('noapt')
+                    alterHTML.htmlname()
+                    alterHTML.htmlbirthday()
+                    btnConsultcheck=false
+                    btnFemaleCheck=false
+                    btnFemale.classList.toggle('validate')
+                }
             }
         }else {
             alert('porfavor rellene todos los campos')
