@@ -299,33 +299,99 @@
       background: rgb(148, 148, 148);
       border-radius: black solid 0.5px;
     }
-    /* css menu */
-    /* main.stats section{ 
+    /* css menu stats */
+    main.stats section{ 
         display: grid;
         grid-template-columns: 1fr;
         margin: 0 auto;
-    } */
+    }
+    main.bug {
+        background: url(images/images-pokedex/menu-statsPok/bg-type-bug.svg);
+    }
+    main.dark {
+        background: url(images/images-pokedex/menu-statsPok/bg-type-dark.svg);
+    }
+    main.drake {
+        background: url(images/images-pokedex/menu-statsPok/bg-type-drake.svg);
+    }
+    main.earth {
+        background: url(images/images-pokedex/menu-statsPok/bg-type-earth.svg);
+    }
+    main.electric {
+        background: url(images/images-pokedex/menu-statsPok/bg-type-electric.svg);
+    }
+    main.fayrie {
+        background: url(images/images-pokedex/menu-statsPok/bg-type-fayrie.svg);
+    }
+    main.figthing {
+        background: url(images/images-pokedex/menu-statsPok/bg-type-fighting.svg);
+    }
+    main.fire {
+        background: url(images/images-pokedex/menu-statsPok/bg-type-fire.svg);
+    }
+    main.fly {
+        background: url(images/images-pokedex/menu-statsPok/bg-type-fly.svg);
+    }
+    main.ghost {
+        background: url(images/images-pokedex/menu-statsPok/bg-type-ghost.svg);
+    }
+    main.grass {
+        background: url(images/images-pokedex/menu-statsPok/bg-type-grass.svg);
+    }
+    main.ice {
+        background: url(images/images-pokedex/menu-statsPok/bg-type-ice.svg);
+    }
+    main.normal {
+        background: url(images/images-pokedex/menu-statsPok/bg-type-normal.svg);
+    }
+    main.poison {
+        background: url(images/images-pokedex/menu-statsPok/bg-type-poison.svg);
+    }
+    main.psychic {
+        background: url(images/images-pokedex/menu-statsPok/bg-type-psychic.svg);
+    }
+    main.rock {
+        background: url(images/images-pokedex/menu-statsPok/bg-type-rock.svg);
+    }
+    main.steel {
+        background: url(images/images-pokedex/menu-statsPok/bg-type-steel.svg);
+    }
+    main.water {
+        background: url(images/images-pokedex/menu-statsPok/bg-type-water.svg);
+    }
     div.headerStats{
         height: 135px;
         width: 420px;
-        border: solid blue 2px;
+    }
+    div.headerStats h1 {
+        text-align: center;
     }
     div.img{
-        border: solid blue 2px;
+        display: flex;
+        justify-content: center;
         height: 240px;
         width: 420px;
     }
+    div.img img {
+        border-radius: 100%;
+        background-color: white;
+        height: 250px;
+        width: 250px;
+    }
     div.statics {
-        border: solid blue 2px;
         height: 300px;
         width: 420px;
     }
+    div.statics p {
+        margin-left: 5px;
+        width: 400px;
+    }
     progress {
         height: 5px;
-        width: 250px;
-        background-color: blue;
+        width: 330px;
     }
     table{
+        display: flex;
         margin: 0 auto;
         width: 400px;
         height: 200px;
@@ -344,38 +410,7 @@
             <h1></h1>
         </header>
         <section id="content">
-            <div class="headerStats"></div>
-            <div class="img"></div>
-            <div class="statics">
-                <p>PokeStats</p>
-                <table>
-                    <tr>
-                        <th>Speed</th>
-                        <td class="valspe"></td>
-                        <td><progress max="255" class="prospe"></progress></td>
-                    </tr>
-                    <tr>
-                        <th>Speed</th>
-                        <td class="valspe"></td>
-                        <td><progress max="255" class="prospe"></progress></td>
-                    </tr>
-                    <tr>
-                        <th>Speed</th>
-                        <td class="valspe"></td>
-                        <td><progress max="255" class="prospe"></progress></td>
-                    </tr>
-                    <tr>
-                        <th>Speed</th>
-                        <td class="valspe"></td>
-                        <td><progress max="255" class="prospe"></progress></td>
-                    </tr>
-                    <tr>
-                        <th>Speed</th>
-                        <td class="valspe"></td>
-                        <td><progress max="255" class="prospe"></progress></td>
-                    </tr>
-                </table>
-            </div>
+           
         </section>
         </nav>
     </main>
@@ -413,63 +448,118 @@
             </div>
             <div class="info-reference">
                 <p class="#"></p>
-                <img src="" alt="">
+                <img class="pokemonNav" src="" alt="">
             </div>
         </div>
     </template>
     <template id="menuStats">
-
+        <div class="headerStats">
+            <h1 class="name">Chikorita</h1>
+            <h2 class="id">#152</h2>
+        </div>
+        <div class="img">
+            <img src="images/images-pokedex/pokemon de prueba.svg" alt="">
+        </div>
+        <div class="statics">
+            <p>PokeStats</p>
+            <table>
+                <tr>
+                    <th>hp</th>
+                    <td class="valspe"></td>
+                    <td><progress max="255" class="prospe" value="0"></progress></td>
+                </tr>
+                <tr>
+                    <th>attack</th>
+                    <td class="valspe"></td>
+                    <td><progress max="255" class="prospe" value="0"></progress></td>
+                </tr>
+                <tr>
+                    <th>Speed</th>
+                    <td class="valspe"></td>
+                    <td><progress max="255" class="prospe" value="0"></progress></td>
+                </tr>
+                <tr>
+                    <th>Speed</th>
+                    <td class="valspe"></td>
+                    <td><progress max="255" class="prospe" value="0"></progress></td>
+                </tr>
+                <tr>
+                    <th>Speed</th>
+                    <td class="valspe"></td>
+                    <td><progress max="255" class="prospe" value="0"></progress></td>
+                </tr>
+            </table>
+        </div>
     </template>
+
+
+
+
     <script>
         //execution
         document.addEventListener('DOMContentLoaded',() => {
-            fetchData(151)
+            fetchData()
             }
         )
         //constants & variables
         const sectionWork= document.querySelector('section#content')
-
+        //menu initial
         const templateInit = document.querySelector('template#menuInit').content
         var cloneMenuInit = templateInit.cloneNode(true)
+        //menu nav
         const templateNav = document.querySelector('template#menuNav').content
         var cloneMenuNav = templateNav.cloneNode(true)
         const cardExample= document.querySelector('#cardE').content
-        var cloneCard= cardExample.cloneNode(true)
+        //menu stats
         const templateStats = document.querySelector('template#menuStats').content
         var cloneMenuStats = templateStats.cloneNode(true)
         const fragment = document.createDocumentFragment()
         
         //functions
-        const fetchData = async (id) => {
+        const fetchData = async () => {
             try {
-                const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
-                const data= await res.json()
-                console.log(data)
+                for (let i = 151; i <= 251; i++) {
+                    var res = await fetch(`https://pokeapi.co/api/v2/pokemon/${i}`)
+                    var data = await res.json()
+                    
+                    // printStatus(data)
+                }
+                printNav(data)
             } catch (error) {
                 console.log(Error)
             }
+ 
         }
 
         const printMenu = () => {
             fragment.appendChild(cloneMenuInit)
             sectionWork.appendChild(fragment)
         }
-        const printNav = () => {
-            
+        const printNav = (pokemon) => {
+            console.log(pokemon)
             fragment.appendChild(cloneMenuNav)  
             for (let i = 0; i < 100; i++) {
-                let cloneCard= cardExample.cloneNode(true)
-                fragment.querySelector('div.navMenu').appendChild(cloneCard)
                 
+                let cloneCard= cardExample.cloneNode(true)
+                for (let i =151 ; i <=251 ; i++){
+                    if ()
+                }
+                cloneCard.querySelector('.pokemonNav').setAttribute('src', pokemon.sprites.front_default)
+                fragment.querySelector('div.navMenu').appendChild(cloneCard)
             }
             
             sectionWork.appendChild(fragment) 
             
             
+        }
+        const printStatus= (pokemon) => {
+            console.log(pokemon)
+            fragment.appendChild(cloneMenuStats)
+            sectionWork.appendChild(fragment)
         } 
         
 
-        //try
+        // try
         
     </script>
 </body>
