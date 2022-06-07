@@ -251,7 +251,7 @@
         width: 60px;
         text-align: center;
     }
-    .card div.info-content p.figthing {
+    .card div.info-content p.fighting {
         background-color: #4e1414;
         width: 60px;
         text-align: center;
@@ -282,6 +282,7 @@
         margin-bottom: 10px;
         width: 65px;
         border-radius: 25px;
+        cursor: pointer;
     }
 
     ::-webkit-scrollbar {
@@ -462,11 +463,11 @@
     <template id="menuStats">
         <div class="headerStats">
             <button class="back">⬅</button>
-            <h1 class="name">Chikorita</h1>
-            <h2 class="id">#152</h2>
+            <h1 class="name"></h1>
+            <h2 class="id">#</h2>
         </div>
         <div class="img">
-            <img src="images/images-pokedex/pokemon de prueba.svg" alt="">
+            <img src="" alt="">
         </div>
         <div class="statics">
             <p>PokeStats</p>
@@ -511,11 +512,8 @@
     <script>
         //execution
         document.addEventListener('DOMContentLoaded',() => {
-            // printStatus()
-            // printMenu()
-            
-            
-            
+                printMenu()
+                InitMenuNav()
         }
         ) 
         //constants & variable
@@ -536,7 +534,7 @@
         //menu stats
         const templateStats = document.querySelector('template#menuStats').content
         var cloneMenuStats = templateStats.cloneNode(true)
-        const btnBack = document.querySelector('btn.back')
+        const btnBack = cloneMenuStats.querySelector('button.back')
 
         const fragment = document.createDocumentFragment()
         
@@ -603,6 +601,7 @@
         const printStatus= () => {
             fragment.appendChild(cloneMenuStats)
             sectionWork.appendChild(fragment)
+            
         }
         const editMenuStats = async(numero)=>{
             var res = await fetch(`https://pokeapi.co/api/v2/pokemon/${numero}`)
@@ -735,17 +734,28 @@
                     console.log(classID[1])
                     if(e.target.classList.contains('pokemonNav')){
                         resetDOM()
+                        printStatus()
                         editMenuStats(classID[1])
+                        
                     }
                 })
             }
         }
-        const menuNav =()=>{
+        const InitMenuNav =()=>{
             btnSubmit.onclick=function(){
                 resetDOM()
                 printNavDef()
             }
+            btnBack.onclick=()=>{
+            // resetDOM()
+            // printNavDef()
+            location.reload()
         }
+        }
+        const secondMenuNav=()=>{
+            printNavDef()
+        }
+
     </script>
 </body>
 </html>
