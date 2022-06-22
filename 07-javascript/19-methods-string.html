@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>methods-string</title>
+    <link rel="stylesheet" href="css/menu.css">
+</head>
+<style>
+    section {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    div.options {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        justify-content: center;
+        align-items: center;
+        margin: 10px 10px 1.4rem 10px;   
+    }
+    textarea {
+        border-radius: 10px;
+        font-family: 'Poppins';
+        font-size: 1rem;
+        display: flex;
+        margin: 0px auto;
+        width: 360px;
+        height: 80px;
+    }
+    input {
+        border-radius: 10px;
+        width: 33%;
+    }
+    button {
+        margin: 0 auto;
+        width: 250px;
+        border-radius: 15px;
+        background-color: grey;
+        color: white;
+        border: solid yellow;
+    }
+    button:hover {
+        transform: scale(1.1);
+    }
+    
+    
+</style>
+<body>
+    <main>
+        <header>
+            <a href="index.html">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
+                  </svg>
+            </a>
+            <h1>Methods-string</h1>
+        </header>
+        <section>
+            <textarea class="textarea" placeholder="Write a sentence ..."></textarea>
+            <div class="options">
+                <label> <input type="radio" name="transform" class="rlow">lowercase </label>
+                <span> or </span>
+                <label> <input type="radio" name="transform" class="rupp">uppercase </label>
+                <input type="text" class="word-origin" placeholder="current">
+                <span> for </span>
+                <input type="text" class="word-replace" placeholder="replace">
+                <input type="text" class="post-start" placeholder="start position">
+                <span> to </span>
+                <input type="text" class="pos-final" placeholder="final position">
+            </div>
+            <button class="btn-show">Show String</button>
+            <ul class="result"></ul>
+        </section>
+        </nav>
+    </main>
+    <script>
+        //Elements
+        const textarea = document.querySelector('.textarea')
+        const r_upp = document.querySelector('.rupp')
+        const r_low = document.querySelector('.rlow')
+        const word_origin = document.querySelector('.word-origin')
+        const word_replace = document.querySelector('.word-replace')
+        const post_start = document.querySelector('.post-start')
+        const pos_final = document.querySelector('.pos-final')
+        const show = document.querySelector('.btn-show')
+        const result = document.querySelector('.result')
+        //varibles
+        var upper = false
+        //Events
+        r_low.onclick = () => upper = false
+        r_upp.onclick = () => upper = true 
+        show.onclick = () =>{ 
+            if(textarea.value.length >0){
+                result.innerHTML= `<li> Original string: ${textarea.value}</li>`
+                result.innerHTML+= `<li><strong> Length string:</strong> ${textarea.value.length}</li>`
+                if(upper){
+                    result.innerHTML+= `<li><strong> Uppercase:</strong> ${textarea.value.toUpperCase()}</li>`
+                }
+                else{
+                    result.innerHTML+= `<li><strong> Lowercase:</strong> ${textarea.value.toLowerCase()}</li>`
+                }
+                result.innerHTML+= `<li><strong> Replace String:</strong> ${textarea.value.replace(word_origin.value, word_replace.value)}</li>`
+                result.innerHTML+= `<li><strong> Cut string:</strong> ${textarea.value.substring(parseInt(post_start.value), parseInt(pos_final.value))}</li>`
+                
+            }
+        }
+    </script>
+</body>
+</html>
