@@ -408,7 +408,7 @@
 </style>
 <body>
     <!-- main.init main.nav STATS had multiply bg -->
-    <main id="etMain" > 
+    <main id="main" > 
         <header>
             <a href="index.html">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -518,7 +518,7 @@
         ) 
         //constants & variable
         const sectionWork= document.querySelector('section#content')
-        const etqMain= document.querySelector('#etMain')
+        const etqMain= document.querySelector('#main')
         
         
         //menu initial
@@ -747,14 +747,11 @@
                 printNavDef()
             }
             btnBack.onclick=()=>{
-            // resetDOM()
-            // printNavDef()
-            location.reload()
+                resetDOM()
+                printNavDef()
+            }
         }
-        }
-        const secondMenuNav=()=>{
-            printNavDef()
-        }
+        
 
     </script>
 </body>
