@@ -4,9 +4,32 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>events</title>
+    <title>methods_numbers</title>
     <link rel="stylesheet" href="css/menu.css">
 </head>
+<style>
+    section {
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-items: center;
+        gap: 15px;
+    }
+    input {
+        border-radius: 10px;
+        width: 33%;
+    }
+    button {
+        margin: 0 auto;
+        width: 100px;
+        border-radius: 15px;
+        background-color: grey;
+        color: white;
+        border: solid yellow;
+    }
+    button:hover {
+        transform: scale(1.1);
+    }
+</style>
 <body>
     <main>
         <header>
@@ -15,12 +38,39 @@
                     <path stroke-linecap="round" stroke-linejoin="round" d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
                   </svg>
             </a>
-            <h1>18-events</h1>
+            <h1>Methods Numbers</h1>
         </header>
         <section>
-            
+            <input type="number" class="numb" placeholder="Enter Float number">
+            <button class="btn_calculate">Calc</button>
+            <ul class="output"></ul>
         </section>
         </nav>
     </main>
+    <script>
+        //Elements
+        const numb = document.querySelector('.numb')
+        const btn_calc = document.querySelector('.btn_calculate')
+        const output = document.querySelector('.output')
+
+        //Events
+        btn_calc.addEventListener('click', () => {
+            let vnum = numb.value
+            if(isFloat(vnum)){ 
+                output.innerHTML = `<li><b>String:<b> '${vnum.toString()}'</li>`
+                output.innerHTML += `<li><b>Integer:<b> ${parseInt(vnum)}</li>`
+                output.innerHTML += `<li><b>Fixed:<b> ${parseFloat(vnum).toFixed(0)}</li>`
+                output.innerHTML += `<li><b>Precision:<b> ${parseFloat(vnum).toPrecision(3)}</li>`
+                output.innerHTML += `<li><b>Float:<b> ${parseFloat(vnum)}</li>`
+            }
+            else {
+                alert('You  must enter a float number(whit decimals)')
+            }
+        })
+        //Function
+        function isFloat(n){
+            return !!(n%1)
+        }
+    </script>
 </body>
 </html>
