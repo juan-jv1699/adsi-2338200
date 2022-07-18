@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>events</title>
     <link rel="stylesheet" href="css/menu.css">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
 </head>
 <style>
     main {
@@ -17,12 +21,23 @@
         display: flex;
         flex-wrap: wrap;
     }
+    .hide {
+        display: none;
+    }
+    div p {
+        font-size: 2rem;
+        height: 2rem;
+    }
     div.balotas {
         width: 420px;
         height: 250px;
         display: flex;
         flex-wrap: wrap;
         gap: 30px;
+        justify-content: center;
+    }
+    div.hide {
+        height: auto;
     }
     div.balota {
         padding: 10px;
@@ -39,11 +54,22 @@
         justify-content: space-between;
     }
     div.balota.superBalota {
+        
         margin: 0 160px;
         background: url(images/baloto_img/super_balota.png);
         background-size: cover;
         width: 80px;
         height: 80px;
+    }
+    div.selector {
+        width: 420px;
+        height: 200px;
+    }
+    div.selector div.muestra{
+        background: url(images/baloto_img/balota.png);
+        border: solid red 2px;
+        width: auto;
+        height: 200px;
     }
     button {
         border-radius: 50px;
@@ -52,6 +78,22 @@
         margin: 0 auto;
         width: 100px;
         height: 40px;
+    }
+    .bounceInLeft {
+        animation: bounceInLeft; /* referring directly to the animation's @keyframe declaration */
+        animation-duration: 1s; /* don't forget to set a duration! */
+    }
+    .bounceInDown {
+        animation: bounceInDown;
+        animation-duration: 1.5s;   
+    }
+    .bounceInRigth {
+        animation: bounceInRight;
+        animation-duration: 2s;   
+    }
+    .bounceInDown01{
+        animation: bounceInDown;
+        animation-duration: 3s;
     }
 </style>
 <body>
@@ -66,37 +108,83 @@
         </header>
         <section>
             <div class="balotas">
-                <div class="balota 1"></div>
-                <div class="balota 2"></div>
-                <div class="balota 3"></div>
-                <div class="balota 4"></div>
-                <div class="balota 5"></div>
-                <div class="balota 6 superBalota"></div>
+                <p class="parrafo"><b>Seleccione un diseño</b></p>
+                <div class="balota balota_1 animate__animated hide"></div>
+                <div class="balota balota_2 animate__animated hide"></div>
+                <div class="balota balota_3 animate__animated hide"></div>
+                <div class="balota balota_4 animate__animated hide"></div>
+                <div class="balota balota_5 animate__animated hide"></div>
+                <div class="balota balota_6  superBalota hide"></div>
+            </div>
+            <div class="selector">
+                <div class="muestra"></div>
             </div>
             <button class="enter">START</button>
         </section>
         </nav>
     </main>
     <script>
+        
         //Elements
         const btn_start = document.querySelector('.enter')
+        const containBalotas = document.querySelector('.balotas')
+        const paragraph = document.querySelector('.parrafo')
         const balotas = document.querySelectorAll('div.balota')
+        const ball1 = document.querySelector('.balota_1')
+        const ball2 = document.querySelector('.balota_2')
+        const ball3 = document.querySelector('.balota_3')
+        const ball4 = document.querySelector('.balota_4')
+        const ball5 = document.querySelector('.balota_5')
+        const superBall = document.querySelector('.superBalota')
+
+        let state = true
+
         var arrayBalotas= new Array
         var arraySuperBalota= new Array
+
+        containBalotas.classList.toggle('hide')
 
         //Events
         btn_start.addEventListener('click', function(){
             for (let i = 0; i < balotas.length; i++) {
                 if (i<5) {
                     let randNum = Math.ceil(Math.random()*(arrayBalotas.length-1));
+                    console.log(randNum)
                     balotas[i].textContent = arrayBalotas[randNum]
-                    arrayBalotas.splice[randNum,1]
+                    arrayBalotas.splice(randNum,1)
                 }
                 else {
                     let ranNumSb = Math.ceil(Math.random()*(arraySuperBalota.length))  
-                    balotas[i].textContent = ranNumSb  
+                    balotas[i].textContent = ranNumSb 
+
                 }
                 
+            }
+            paragraph.classList.toggle('hide')
+
+            ball1.classList.toggle('hide')
+            ball2.classList.toggle('hide')
+            ball3.classList.toggle('hide')
+            ball4.classList.toggle('hide')
+            ball5.classList.toggle('hide')
+            superBall.classList.toggle('hide')
+
+            ball1.classList.add('bounceInLeft')
+            ball2.classList.add('bounceInDown')
+            ball3.classList.add('bounceInRigth')
+            ball4.classList.add('bounceInLeft')
+            ball5.classList.add('bounceInRigth')
+            superBall.classList.add('bounceInDown01')
+
+            if(state){
+                console.log('true')
+                btn_start.textContent='RESET'
+                state=false
+            }
+            else{
+                console.log('juas juas')
+                btn_start.textContent='START'
+                state=true
             }
         })
         //execution
@@ -106,6 +194,7 @@
         for (let i = 0; i < 16; i++) {
             arraySuperBalota[i] = i+1;
         }
+        
     </script>
 </body>
 </html>
