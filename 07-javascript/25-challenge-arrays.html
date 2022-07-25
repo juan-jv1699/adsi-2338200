@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example</title>
+    <link rel="stylesheet" href="css/menu.css">
+</head>
+<style>
+    ul {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        width: auto;
+        height: 250px;
+    }
+    li {
+        width: 80px;
+        height: 80px;
+        margin: 10px;
+        border: solid 2px blue;
+        border-radius: 50px;
+        object-fit: cover;
+    }
+    li:hover {
+        transform: scale(1.2);
+    }
+    /* div.options {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    div.options h2 {
+        margin: 0 auto;
+    } */
+    
+
+    /* CSS */
+    .button-00 {
+        align-items: center;
+        appearance: none;
+        background-color: #FCFCFD;
+        border-radius: 4px;
+        border-width: 0;
+        box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+        box-sizing: border-box;
+        color: #36395A;
+        cursor: pointer;
+        display: inline-flex;
+        font-family: "JetBrains Mono",monospace;
+        height: 48px;
+        justify-content: center;
+        line-height: 1;
+        list-style: none;
+        overflow: hidden;
+        padding-left: 16px;
+        padding-right: 16px;
+        position: relative;
+        text-align: left;
+        text-decoration: none;
+        transition: box-shadow .15s,transform .15s;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        white-space: nowrap;
+        will-change: box-shadow,transform;
+        font-size: 18px;
+    }
+
+    .button-00:focus {
+      box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+    }
+
+    .button-00:hover {
+      box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+      transform: translateY(-2px);
+    }
+
+    .button-30:link  {
+      box-shadow: #D6D6E7 0 3px 7px inset;
+      transform: translateY(2px);
+    }
+</style>
+<body>
+    <main>
+        <header>
+            <a href="index.html">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
+                  </svg>
+            </a>
+            <h1>Challenge-arrays</h1>
+        </header>
+        <section>
+            <ul>
+                <li class="option option-01">🦄</li>
+                <li class="option option-02">🐸</li>
+                <li class="option option-03">🦁</li>
+                <li class="option option-04">🐻</li>
+                <li class="option option-05">🦝</li>
+                <li class="option option-06">🐯</li>
+            </ul>
+            <div class="options">
+                <br>
+                <h2 class="optionPosition">seleccione la posicion</h2>
+                <br>
+                <select name="option_position" id="">
+                    <option value="firsOne">primer elemento</option>
+                    <option value="lastOne">ultimo elemento</option>
+                    <option value="especificPosition">posicion especifica</option>
+                </select>
+                <br>
+                 ingrese la posicion
+                <input type="number">
+                <br>
+                <button class="button-00 delete">Delete</button>
+                <button class="button-00 add">Add</button>
+
+            </div>
+        </section>
+        </nav>
+    </main>
+</body>
+</html>

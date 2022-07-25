@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example</title>
+    <link rel="stylesheet" href="css/menu.css">
+</head>
+<body>
+    <main>
+        <header>
+            <a href="index.html">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
+                  </svg>
+            </a>
+            <h1>Example</h1>
+        </header>
+        <section>
+            <ul class="emojis"></ul>
+        </section>
+        </nav>
+    </main>
+    <script>
+        //Elements
+        const emojis = document.querySelector('.emojis')
+        //variables && constants
+        const list = ['🐺','🦁','🐯','🦝','🐻']
+        //valueOf
+        emojis.innerHTML=`<li><b> valueOf: ${list.valueOf()}</b></li>`
+        //string
+        emojis.innerHTML+=`<li><b> string: ${list.toString()}</b></li>`
+        //Join 
+        emojis.innerHTML+=`<li><b> join: ${list.join('🛖')}</b></li>`
+        //Sort
+        emojis.innerHTML+=`<li><b> sort: ${list.sort()}</b></li>`
+        //reverse
+        emojis.innerHTML+=`<li><b> reverse: ${list.reverse()}</b></li>`
+        //Pop(Delet lastone)
+        list.pop()
+        emojis.innerHTML+=`<li><b> pop(delete last-one): ${list}</b></li>`
+        //shift(delete firstone)
+        list.shift()
+        emojis.innerHTML+=`<li><b> shift(delete first-one): ${list}</b></li>`
+        //push(add last one)
+        list.push('🐸')
+        emojis.innerHTML+=`<li><b> push(add last one): ${list}</b></li>`
+        //unshift (add first one)
+        list.unshift('🦄')
+        emojis.innerHTML+=`<li><b> unshift(add first one): ${list}</b></li>`
+        //slice
+        let animals = list.slice(0,3)
+        emojis.innerHTML+=`<li><b> slice: ${animals}</b></li>`
+        //splice
+        emojis.innerHTML+=`<li><b> splice: ${list}</b></li>`
+        list.splice(2,1,)
+        emojis.innerHTML+=`<li><b> splice: ${list}</b></li>`
+
+    </script>
+</body>
+</html>

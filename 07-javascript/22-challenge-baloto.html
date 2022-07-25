@@ -39,7 +39,7 @@
     div.hide {
         height: auto;
     }
-    div.balota {
+    div.balota.uglyDesign {
         padding: 10px;
         text-align:center;
         font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
@@ -53,10 +53,55 @@
         border-radius: 50%;
         justify-content: space-between;
     }
-    div.balota.superBalota {
+    div.balota.moon {
+        padding: 10px;
+        text-align:center;
+        font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
+        color: rgb(0, 0, 0);
+        font-size: 3rem;
+        margin: 0 auto;
+        background: url(images/baloto_img/balotaMoon.png);
+        background-size: cover;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        justify-content: space-between;
+    }
+    div.balota.billar {
+        padding: 10px;
+        text-align:center;
+        font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
+        color: rgb(255, 0, 0);
+        font-size: 3rem;
+        margin: 0 auto;
+        background: url(images/baloto_img/balotaBillar.png);
+        background-size: cover;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        justify-content: space-between;
+    }
+    div.balota.superBalota.uglyDesign {
         
         margin: 0 160px;
         background: url(images/baloto_img/super_balota.png);
+        background-size: cover;
+        width: 80px;
+        height: 80px;
+    }
+    div.balota.superBalota.sun {
+        
+        margin: 0 160px;
+        background: url(images/baloto_img/sunSuperBalota.png);
+        background-size: cover;
+        width: 80px;
+        height: 80px;
+    }
+    div.balota.superBalota.billar {
+        
+        margin: 0 160px;
+        background: url(images/baloto_img/Exclude.png);
+        color: black;
         background-size: cover;
         width: 80px;
         height: 80px;
@@ -66,8 +111,14 @@
         height: 200px;
     }
     div.selector div.muestra{
-        background: url(images/baloto_img/balota.png);
-        border: solid red 2px;
+        display: flex;
+        position: absolute;
+        width: 418px;
+        height: 200px;
+    }
+    div.selector div.muestra img {
+        margin: 0 0;
+        position: relative;
         width: auto;
         height: 200px;
     }
@@ -78,6 +129,30 @@
         margin: 0 auto;
         width: 100px;
         height: 40px;
+    }
+    button.next {
+        background: url(images/baloto_img/nextBtn.png)no-repeat;
+        background-size: cover;
+        border: none;
+        margin: auto auto;
+        width: 40px;
+        height: 40px;
+    }
+    button.back {
+        background: url(images/baloto_img/backBtn.png)no-repeat;
+        background-size: cover;
+        border: none;
+        margin: auto auto;
+        width: 40px;
+        height: 40px;
+    }
+    button.back:hover, button.next:hover {
+        transform: scale(1.2);
+    } 
+    button.back:disabled, button.next:disabled {
+        cursor: not-allowed;
+        pointer-events: none;
+        background-color: rgb(229, 229, 229) !important;
     }
     .bounceInLeft {
         animation: bounceInLeft; /* referring directly to the animation's @keyframe declaration */
@@ -117,7 +192,11 @@
                 <div class="balota balota_6  superBalota hide"></div>
             </div>
             <div class="selector">
-                <div class="muestra"></div>
+                <div class="muestra">
+                    <button class="back"></button>
+                    <img src="" alt="">
+                    <button class="next"></button>
+                </div>
             </div>
             <button class="enter">START</button>
         </section>
@@ -137,15 +216,37 @@
         const ball5 = document.querySelector('.balota_5')
         const superBall = document.querySelector('.superBalota')
 
+        const selector = document.querySelector('.selector')
+        const btnNext = document.querySelector('.next')
+        const btnBack = document.querySelector('.back')
+        const muestra = document.querySelector('img')
+
         let state = true
 
         var arrayBalotas= new Array
         var arraySuperBalota= new Array
+        var arrayBgBalotas= new Array
+        var contador = 0
 
         containBalotas.classList.toggle('hide')
 
         //Events
+        btnBack.addEventListener('click', function(){
+            if(contador>0){
+                contador-=1
+                optionsReference(contador)
+            }
+        })
+        btnNext.addEventListener('click', function(){
+            if(contador<arrayBgBalotas.length){
+                contador+=1
+                console.log(contador)
+                optionsReference(contador)
+            }
+        })
+        
         btn_start.addEventListener('click', function(){
+            arrayBalotasCreate()
             for (let i = 0; i < balotas.length; i++) {
                 if (i<5) {
                     let randNum = Math.ceil(Math.random()*(arrayBalotas.length-1));
@@ -156,10 +257,11 @@
                 else {
                     let ranNumSb = Math.ceil(Math.random()*(arraySuperBalota.length))  
                     balotas[i].textContent = ranNumSb 
-
+                    arrayBalotasCreate()
                 }
                 
             }
+            selector.classList.toggle('hide')
             paragraph.classList.toggle('hide')
 
             ball1.classList.toggle('hide')
@@ -177,24 +279,68 @@
             superBall.classList.add('bounceInDown01')
 
             if(state){
-                console.log('true')
                 btn_start.textContent='RESET'
                 state=false
             }
             else{
-                console.log('juas juas')
                 btn_start.textContent='START'
                 state=true
             }
         })
         //execution
-        for (let i = 0; i < 43; i++) {
-			arrayBalotas[i] = i+1;
+        arrayBgBalotas[0]= "images/baloto_img/balota.png";
+        arrayBgBalotas[1]= "images/baloto_img/balotaMoon.png";
+        arrayBgBalotas[2]= "images/baloto_img/balotaBillar.png";
+        const optionsReference=function(contador){
+            switch (contador) {
+                case 0:
+                    btnBack.disabled=true;
+                    btnNext.disabled=false;
+                    muestra.setAttribute('src', arrayBgBalotas[0]); 
+                    balotas.forEach(element => {
+                        element.classList.toggle('uglyDesign')
+                        element.classList.remove('moon')
+                        element.classList.remove('pokeball')
+                    });
+                    superBall.classList.add('uglyDesign')
+                    superBall.classList.remove('sun')
+                    break;
+                case 1:
+                    btnBack.disabled=false;
+                    btnNext.disabled=false;
+                    muestra.setAttribute('src', arrayBgBalotas[1]);
+                    balotas.forEach(element => {
+                        element.classList.toggle('moon')
+                        element.classList.remove('pokeball')
+                        element.classList.remove('uglyDesign')
+                    });
+                    superBall.classList.add('sun')
+                    superBall.classList.remove('uglyDesign')
+                    break;
+                case 2: 
+                    btnNext.disabled=true;
+                    btnBack.disabled=false;
+                    muestra.setAttribute('src', arrayBgBalotas[2]);
+                    balotas.forEach(element => {
+                        element.classList.toggle('billar')
+                        element.classList.remove('moon')
+                        element.classList.remove('uglyDesign')
+                    });
+                    break;
+                default:
+                    break;
+            }
+        }
+        optionsReference(contador)
+
+        const arrayBalotasCreate =()=>{
+            for (let i = 0; i < 43; i++) {
+                arrayBalotas[i] = i+1;
+            }
         }
         for (let i = 0; i < 16; i++) {
             arraySuperBalota[i] = i+1;
         }
-        
     </script>
 </body>
 </html>

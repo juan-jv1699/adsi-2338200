@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>methods-date</title>
+    <link rel="stylesheet" href="css/menu.css">
+</head>
+<body>
+    <main>
+        <header>
+            <a href="index.html">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
+                  </svg>
+            </a>
+            <h1>Methods-date</h1>
+        </header>
+        <section>
+            <h2>method get</h2>
+            <ul class="list-get"></ul>
+            <h2>method set</h2>
+            <ul class="list-set"></ul>
+        </section>
+        </nav>
+    </main>
+    <script>
+        //Elements
+        const listGet = document.querySelector('.list-get')
+        const listSet = document.querySelector('.list-set')
+        var today = new Date
+        const future = new Date('01/18/2023 08:00:00')
+
+        //Get
+        listGet.innerHTML=`<li><b>Current date: </b>${today.getDate()}/${today.getMonth()+1}/${today.getFullYear()}</li>`
+        listGet.innerHTML+=`<li><b>Current Day: </b>${today.getDate()}</li>`
+        listGet.innerHTML+=`<li><b>Current Year: </b>${today.getFullYear()}</li>`
+        listGet.innerHTML+=`<li><b>Current Month: </b>${today.getMonth()+1}</li>`
+        listGet.innerHTML+=`<li><b>Current week day: </b>${today.getDay()}</li>`
+        listGet.innerHTML+=`<li><b>Current hours: </b>${today.getHours()}</li>`
+        listGet.innerHTML+=`<li><b>Current minutes: </b>${today.getMinutes()}</li>`
+        listGet.innerHTML+=`<li><b>Current seconds: </b>${today.getSeconds()}</li>`
+        //Let 
+        listSet.innerHTML=`<li><b>future date: </b>${future.getDate()}/${future.getMonth()+1}/${future.getFullYear()}</li>`
+        listSet.innerHTML+=`<li><b>future day: </b>${future.getDate()}</li>`
+        listSet.innerHTML+=`<li><b>future year: </b>${future.getFullYear()}</li>`
+        listSet.innerHTML+=`<li><b>future month: </b>${future.getMonth()}</li>`
+        listSet.innerHTML+=`<li><b>future week-day: </b>${future.getDay()}</li>`
+        listSet.innerHTML+=`<li><b>future hours: </b>${future.getHours()}</li>`
+        listSet.innerHTML+=`<li><b>future minutes: </b>${future.getMinutes()}</li>`
+        listSet.innerHTML+=`<li><b>future seconds: </b>${future.getSeconds()}</li>`
+
+        future.setFullYear('2028')
+        future.setMonth('02')
+        future.setDate('25')
+        listSet.innerHTML+=`<li><b>future date: </b>${future.getDate()}/${future.getMonth()+1}/${future.getFullYear()}</li>`
+        
+    </script>
+</body>
+</html>
