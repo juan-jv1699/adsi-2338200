@@ -9,6 +9,7 @@
 </head>
 <style>
     ul {
+        margin: 0 auto;
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
@@ -19,22 +20,35 @@
         width: 80px;
         height: 80px;
         margin: 10px;
-        border: solid 2px blue;
         border-radius: 50px;
         object-fit: cover;
     }
     li:hover {
         transform: scale(1.2);
     }
-    /* div.options {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
+    div.options {
+        text-align: center;
+        display: grid;
+        grid-template-columns: 1fr;
     }
     div.options h2 {
         margin: 0 auto;
-    } */
-    
+    }
+    div.options select {
+        width: 150px;
+        margin: 0 140px;
+    }
+    div.options input {
+        width: 150px;
+        margin: 0 140px;
+    }
+    div.btns {
+
+    }
+    button {
+        margin: 0 auto;
+        width: 150px;
+    }
 
     /* CSS */
     .button-00 {
@@ -114,8 +128,10 @@
                  ingrese la posicion
                 <input type="number">
                 <br>
-                <button class="button-00 delete">Delete</button>
-                <button class="button-00 add">Add</button>
+                <div class="btns">
+                    <button class="button-00 delete">Delete</button>
+                    <button class="button-00 add">Add</button>
+                </div>
 
             </div>
         </section>
