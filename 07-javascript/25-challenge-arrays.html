@@ -95,6 +95,18 @@
       box-shadow: #D6D6E7 0 3px 7px inset;
       transform: translateY(2px);
     }
+
+    /* pruebas de css */
+    .disabled 
+    {
+        cursor: not-allowed;
+        background-color: rgb(229, 229, 229) !important;
+    }
+    .disabled > * 
+    {
+        pointer-events:none;
+    }
+
 </style>
 <body>
     <main>
@@ -119,23 +131,83 @@
                 <br>
                 <h2 class="optionPosition">seleccione la posicion</h2>
                 <br>
-                <select name="option_position" id="">
+                <select name="option_position" id="select">
                     <option value="firsOne">primer elemento</option>
                     <option value="lastOne">ultimo elemento</option>
                     <option value="especificPosition">posicion especifica</option>
                 </select>
                 <br>
                  ingrese la posicion
-                <input type="number">
-                <br>
-                <div class="btns">
-                    <button class="button-00 delete">Delete</button>
-                    <button class="button-00 add">Add</button>
+                 <input type="number" id="especific">
+                 <br>
+                 <div class="btns">
+                    <button class="button-00 delete ">Delete</button>
+                    <button class="button-00 add ">Add</button>
                 </div>
+
+            </div>
+            <div class="resultado">
 
             </div>
         </section>
         </nav>
     </main>
+    <script>
+        //vars const 
+        const resultado = document.querySelector('.resultado')
+        const select = document.getElementById('select')
+        const positionEsp = document.getElementById('especific')
+        const btnDelete = document.querySelector('.delete')
+        const btnAdd = document.querySelector('.add')
+
+        var selectionIcon
+        var onIcon = true
+        var numIcon = 0
+        
+        var pinselection = document.querySelectorAll('.option')
+        pinselection.forEach(li => {
+            li.onclick=()=>{
+                selectionIcon = li.innerHTML
+                console.log(li.classList[1])
+                switch (li.classList[1]) {
+                    case 'option-01':
+                        
+                        break;
+                    case 'option-02':
+                        
+                        break;
+                    case 'option-03':
+                        
+                        break;
+                    case 'option-04':
+                        
+                        break;
+                    case 'option-05':
+                        
+                        break;
+                    case 'option-06':
+                        
+                        break;
+                
+                    default:
+                        break;
+                }
+
+                
+            }
+        });
+        function toggleDynamic (llave, num){
+            if(llave){
+                btnAdd.classList.toggle('disabled')        
+                alert('si se pudo')
+                llave = false
+            }
+            else if(num==1) { 
+
+    
+            }
+        }
+
+    </script>
 </body>
 </html>
