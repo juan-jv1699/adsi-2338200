@@ -171,25 +171,31 @@
                 console.log(li.classList[1])
                 switch (li.classList[1]) {
                     case 'option-01':
-                        
+                        toggleDynamic(onIcon,numIcon)
+                        numIcon = 1
                         break;
                     case 'option-02':
-                        
+                        toggleDynamic(onIcon,numIcon)
+                        numIcon = 2
                         break;
                     case 'option-03':
-                        
+                        toggleDynamic(onIcon,numIcon)
+                        numIcon = 3
                         break;
                     case 'option-04':
-                        
+                        toggleDynamic(onIcon,numIcon)
+                        numIcon = 4
                         break;
                     case 'option-05':
-                        
+                        toggleDynamic(onIcon,numIcon)
+                        numIcon = 5
                         break;
                     case 'option-06':
-                        
+                        toggleDynamic(onIcon,numIcon)
+                        numIcon = 6
                         break;
-                
                     default:
+                        numIcon = 0
                         break;
                 }
 
@@ -199,12 +205,33 @@
         function toggleDynamic (llave, num){
             if(llave){
                 btnAdd.classList.toggle('disabled')        
-                alert('si se pudo')
-                llave = false
+                onIcon = false
             }
-            else if(num==1) { 
-
-    
+            else{
+                switch (num) {
+                    case 1:
+                        btnAdd.classList.toggle('disabled')        
+                        onIcon = true
+                        break;
+                    case 2:
+                        
+                        break;
+                    case 3:
+                        
+                        break;
+                    case 4:
+                        
+                        break;
+                    case 5:
+                        
+                        break;
+                    case 6:
+                        
+                        break;
+                
+                    default:
+                        break;
+                }
             }
         }
 
