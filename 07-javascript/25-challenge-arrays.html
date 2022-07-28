@@ -42,9 +42,6 @@
         width: 150px;
         margin: 0 140px;
     }
-    div.btns {
-
-    }
     button {
         margin: 0 auto;
         width: 150px;
@@ -106,6 +103,32 @@
     {
         pointer-events:none;
     }
+    .selected {
+        border: solid red 2px;
+        transform: scale(1.2);
+    }
+    .sisi {
+        border: solid blue 2px;
+    }
+    .resultado {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        gap: 25px;
+        height: 70px;
+        width: 380px;
+        background: white;
+        overflow-x: hidden;
+        overflow-x: scroll;
+        margin: 15px auto;
+    }
+    .finalPrint {
+        margin: 1px 2px;
+        height: 50px;
+        width: 50px;
+        border: solid 1px black;
+        border-radius: 50px;
+    }
 
 </style>
 <body>
@@ -118,7 +141,7 @@
             </a>
             <h1>Challenge-arrays</h1>
         </header>
-        <section>
+        <section class="section">
             <ul>
                 <li class="option option-01">🦄</li>
                 <li class="option option-02">🐸</li>
@@ -141,100 +164,180 @@
                  <input type="number" id="especific">
                  <br>
                  <div class="btns">
-                    <button class="button-00 delete ">Delete</button>
-                    <button class="button-00 add ">Add</button>
+                    <button class="button-00 delete disabled">Delete</button>
+                    <button class="button-00 add disabled">Add</button>
                 </div>
 
             </div>
-            <div class="resultado">
-
-            </div>
+            
         </section>
+        <h1>Hello World</h1>
+        <template class="result">
+            <div class="resultado">
+            </div>
+        </template>
         </nav>
     </main>
     <script>
         //vars const 
-        const resultado = document.querySelector('.resultado')
+        const section = document.querySelector('.section')
+        var vSection 
+
         const select = document.getElementById('select')
         const positionEsp = document.getElementById('especific')
-        const btnDelete = document.querySelector('.delete')
         const btnAdd = document.querySelector('.add')
+        const btnDelete = document.querySelector('.delete')
+        const templateResult = document.querySelector('template.result').content
+        
+        const templateDivResult = templateResult.querySelector('.resultado')
+
+        let cloneResult = templateDivResult.cloneNode(true)
+
 
         var selectionIcon
-        var onIcon = true
-        var numIcon = 0
-        
+        var onselected = true
+
+        var arrayStickers = []
+        var pos
+        var pos1
+
+        var objetoVis = ""
+
+
         var pinselection = document.querySelectorAll('.option')
         pinselection.forEach(li => {
             li.onclick=()=>{
-                selectionIcon = li.innerHTML
-                console.log(li.classList[1])
-                switch (li.classList[1]) {
-                    case 'option-01':
-                        toggleDynamic(onIcon,numIcon)
-                        numIcon = 1
-                        break;
-                    case 'option-02':
-                        toggleDynamic(onIcon,numIcon)
-                        numIcon = 2
-                        break;
-                    case 'option-03':
-                        toggleDynamic(onIcon,numIcon)
-                        numIcon = 3
-                        break;
-                    case 'option-04':
-                        toggleDynamic(onIcon,numIcon)
-                        numIcon = 4
-                        break;
-                    case 'option-05':
-                        toggleDynamic(onIcon,numIcon)
-                        numIcon = 5
-                        break;
-                    case 'option-06':
-                        toggleDynamic(onIcon,numIcon)
-                        numIcon = 6
-                        break;
-                    default:
-                        numIcon = 0
-                        break;
+                if(onselected){
+                    btnAdd.classList.toggle('disabled')     
+                    btnDelete.classList.toggle('disabled')
+                    onselected = false
                 }
-
-                
+                selectionIcon = li.innerHTML
+                toggleDynamic(li)
             }
         });
-        function toggleDynamic (llave, num){
-            if(llave){
-                btnAdd.classList.toggle('disabled')        
-                onIcon = false
-            }
-            else{
-                switch (num) {
-                    case 1:
-                        btnAdd.classList.toggle('disabled')        
-                        onIcon = true
+        
+        btnAdd.addEventListener('click', ()=>{
+            swtSelectspos()
+            console.log(arrayStickers.valueOf())
+            printDivImg()
+        })
+        btnDelete.addEventListener('click', ()=>{
+            swtSelectsneg()
+            console.log(arrayStickers.valueOf())
+            dropDivimg()
+        })
+        console.log(select.value)
+        
+        //functions
+        function swtSelectspos(){
+            pos = positionEsp.value
+            pos1= pos-1
+            switch(select.value){
+                case 'firsOne':
+                    arrayStickers.unshift(selectionIcon)
+                    break;
+                    case 'lastOne':
+                        arrayStickers.push(selectionIcon)
                         break;
-                    case 2:
-                        
-                        break;
-                    case 3:
-                        
-                        break;
-                    case 4:
-                        
-                        break;
-                    case 5:
-                        
-                        break;
-                    case 6:
-                        
-                        break;
-                
-                    default:
-                        break;
-                }
+                case 'especificPosition':
+                    if(pos!="" && pos1<=arrayStickers.length ){
+                        arrayStickers.splice(pos1,0,selectionIcon)
+                    }else if(pos=="") {
+                        alert('por favor ingresa la position')
+                    }
+                    else if(pos1>=arrayStickers.length){
+                        alert('ingresaste una posicion no valida')
+                    }
+                    break;
             }
         }
-
-    </script>
+        function swtSelectsneg(){
+            pos = positionEsp.value
+            let pos1= pos-1
+            console.log(pos1)
+            switch(select.value){
+                case 'firsOne':
+                    arrayStickers.shift(selectionIcon)
+                    break;
+                case 'lastOne':
+                    arrayStickers.pop(selectionIcon)
+                    break;
+                case 'especificPosition':
+                    if(pos!="" && pos1<=arrayStickers.length ){
+                        arrayStickers.splice(pos1,1,)
+                    }else if(pos=="") {
+                        alert('por favor ingresa la position')
+                    }
+                    else if(pos1>=arrayStickers.length){
+                        alert('ingresaste una posicion no valida')
+                    }
+                    break;
+                }
+            }
+            function searchContent(){
+                vSection = document.querySelector('.resultado')
+            }
+            const printDivImg =()=>{
+                searchContent()
+                if (vSection != null) {
+                    vSection.innerHTML = ""
+                }
+                let sticker
+                arrayStickers.forEach(e => {
+                    sticker=e.valueOf()
+                    let divStick = document.createElement('div')
+                    divStick.classList.add('finalPrint')
+                    divStick.innerHTML=sticker
+                    cloneResult.appendChild(divStick)
+                });
+                console.log(cloneResult)
+                section.appendChild(cloneResult)
+            }
+            function dropDivimg(){
+                let deleteCheck
+                objetoVis
+                switch(select.value){
+                case 'firsOne':
+                    searchContent()
+                    deleteCheck = vSection.childNodes[0]
+                    nodoDelete = section.querySelector('.resultado')
+                    nodoDelete.removeChild(deleteCheck)
+                    break;
+                case 'lastOne':
+                    deleteCheck = vSection.childNodes[(arrayStickers.length)]
+                    nodoDelete = section.querySelector('.resultado')
+                    nodoDelete.removeChild(deleteCheck)
+                    break;
+                case 'especificPosition':
+                    pos1=pos-1
+                    if(pos!="" && pos1<=arrayStickers.length ){
+                        deleteCheck = vSection.childNodes[pos1]
+                        nodoDelete = section.querySelector('.resultado')
+                        nodoDelete.removeChild(deleteCheck)
+                    }else if(pos=="") {
+                        alert('por favor ingresa la position')
+                    }
+                    else if(pos1>=arrayStickers.length){
+                        alert('ingresaste una posicion no valida')
+                    }
+                    break;
+                }
+            }
+            function toggleDynamic (li){
+                ondisableLi()
+                li.classList.remove('sisi')
+                li.classList.add('selected')
+                clase = li.classList[2]
+            }
+            
+            function ondisableLi(){
+                pinselection.forEach(Element=>{
+                    pinselection.forEach(element => {
+                        element.classList.add('sisi')
+                    });
+                })
+        }
+        </script>
 </body>
 </html>
