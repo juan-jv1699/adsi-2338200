@@ -6,24 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Example</title>
     <link rel="stylesheet" href="css/menu.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap" rel="stylesheet">
 </head>
 <style>
     ul {
-        margin: 0 auto;
+        margin: 0 0;
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
         width: auto;
         height: 250px;
     }
-    li {
+    div.option {
         width: 80px;
         height: 80px;
         margin: 10px;
         border-radius: 50px;
         object-fit: cover;
     }
-    li:hover {
+    div.option:hover {
         transform: scale(1.2);
     }
     div.options {
@@ -88,7 +91,7 @@
       transform: translateY(-2px);
     }
 
-    .button-30:link  {
+    .button-00:link  {
       box-shadow: #D6D6E7 0 3px 7px inset;
       transform: translateY(2px);
     }
@@ -104,11 +107,12 @@
         pointer-events:none;
     }
     .selected {
-        border: solid red 2px;
+        border: solid rgb(255, 167, 52) 1px;
         transform: scale(1.2);
     }
     .sisi {
-        border: solid blue 2px;
+        border: solid rgb(255, 255, 255) 1px;
+        filter: grayscale(0.7);
     }
     .resultado {
         display: flex;
@@ -128,6 +132,17 @@
         width: 50px;
         border: solid 1px black;
         border-radius: 50px;
+        font-size: 1rem;
+        color: rgb(43, 0, 0);
+        font-family: 'Mochiy Pop One', sans-serif;
+    }
+
+    /* design section */
+    .section {
+        height: 610px;
+        width: 420px;
+        border-radius: 40px;
+        background: linear-gradient(to bottom, rgb(255, 235, 119) 80%, rgb(255, 0, 0));
     }
 
 </style>
@@ -143,12 +158,12 @@
         </header>
         <section class="section">
             <ul>
-                <li class="option option-01">🦄</li>
-                <li class="option option-02">🐸</li>
-                <li class="option option-03">🦁</li>
-                <li class="option option-04">🐻</li>
-                <li class="option option-05">🦝</li>
-                <li class="option option-06">🐯</li>
+                <div class="option option-01" style="background: url(images/challengeArrays/coffee.svg);background-size: cover;"></div>
+                <div class="option option-02" style="background: url(images/challengeArrays/cupcake.svg);background-size: cover;"></div>
+                <div class="option option-03" style="background: url(images/challengeArrays/hotdog.svg);background-size: cover;"></div>
+                <div class="option option-04" style="background: url(images/challengeArrays/hamburger.svg);background-size: cover;"></div>
+                <div class="option option-05" style="background: url(images/challengeArrays/pizza.svg);background-size: cover;"></div>
+                <div class="option option-06" style="background: url(images/challengeArrays/taco.svg);background-size: cover;"></div>
             </ul>
             <div class="options">
                 <br>
@@ -171,7 +186,6 @@
             </div>
             
         </section>
-        <h1>Hello World</h1>
         <template class="result">
             <div class="resultado">
             </div>
@@ -197,12 +211,11 @@
         var selectionIcon
         var onselected = true
 
-        var arrayStickers = []
+        var arrayBgUrl = []
         var pos
         var pos1
 
         var objetoVis = ""
-
 
         var pinselection = document.querySelectorAll('.option')
         pinselection.forEach(li => {
@@ -212,19 +225,21 @@
                     btnDelete.classList.toggle('disabled')
                     onselected = false
                 }
-                selectionIcon = li.innerHTML
+                selectionIcon = li.style.background
+                numPosition = li.innerHTML
+                console.log(selectionIcon)
                 toggleDynamic(li)
             }
         });
         
         btnAdd.addEventListener('click', ()=>{
             swtSelectspos()
-            console.log(arrayStickers.valueOf())
+            console.log(arrayBgUrl.valueOf())
             printDivImg()
         })
         btnDelete.addEventListener('click', ()=>{
             swtSelectsneg()
-            console.log(arrayStickers.valueOf())
+            console.log(arrayBgUrl.valueOf())
             dropDivimg()
         })
         console.log(select.value)
@@ -235,18 +250,18 @@
             pos1= pos-1
             switch(select.value){
                 case 'firsOne':
-                    arrayStickers.unshift(selectionIcon)
+                    arrayBgUrl.unshift(selectionIcon)
                     break;
                     case 'lastOne':
-                        arrayStickers.push(selectionIcon)
+                        arrayBgUrl.push(selectionIcon)
                         break;
                 case 'especificPosition':
-                    if(pos!="" && pos1<=arrayStickers.length ){
-                        arrayStickers.splice(pos1,0,selectionIcon)
+                    if(pos!="" && pos1<=arrayBgUrl.length ){
+                        arrayBgUrl.splice(pos1,0,selectionIcon)
                     }else if(pos=="") {
                         alert('por favor ingresa la position')
                     }
-                    else if(pos1>=arrayStickers.length){
+                    else if(pos1>=arrayBgUrl.length){
                         alert('ingresaste una posicion no valida')
                     }
                     break;
@@ -258,18 +273,18 @@
             console.log(pos1)
             switch(select.value){
                 case 'firsOne':
-                    arrayStickers.shift(selectionIcon)
+                    arrayBgUrl.shift(selectionIcon)
                     break;
                 case 'lastOne':
-                    arrayStickers.pop(selectionIcon)
+                    arrayBgUrl.pop(selectionIcon)
                     break;
                 case 'especificPosition':
-                    if(pos!="" && pos1<=arrayStickers.length ){
-                        arrayStickers.splice(pos1,1,)
+                    if(pos!="" && pos1<=arrayBgUrl.length ){
+                        arrayBgUrl.splice(pos1,1,)
                     }else if(pos=="") {
                         alert('por favor ingresa la position')
                     }
-                    else if(pos1>=arrayStickers.length){
+                    else if(pos1>=arrayBgUrl.length){
                         alert('ingresaste una posicion no valida')
                     }
                     break;
@@ -283,13 +298,17 @@
                 if (vSection != null) {
                     vSection.innerHTML = ""
                 }
-                let sticker
-                arrayStickers.forEach(e => {
-                    sticker=e.valueOf()
+                let bgSelected
+                let num = 1
+                arrayBgUrl.forEach(e => {
+                    bgSelected=e.valueOf()
                     let divStick = document.createElement('div')
                     divStick.classList.add('finalPrint')
-                    divStick.innerHTML=sticker
+                    divStick.classList.add('font-effect-neon')
+                    divStick.style.background=bgSelected
+                    divStick.innerHTML=num
                     cloneResult.appendChild(divStick)
+                    num +=1
                 });
                 console.log(cloneResult)
                 section.appendChild(cloneResult)
@@ -303,22 +322,24 @@
                     deleteCheck = vSection.childNodes[0]
                     nodoDelete = section.querySelector('.resultado')
                     nodoDelete.removeChild(deleteCheck)
+                    printDivImg()
                     break;
                 case 'lastOne':
-                    deleteCheck = vSection.childNodes[(arrayStickers.length)]
+                    deleteCheck = vSection.childNodes[(arrayBgUrl.length)]
                     nodoDelete = section.querySelector('.resultado')
                     nodoDelete.removeChild(deleteCheck)
                     break;
                 case 'especificPosition':
                     pos1=pos-1
-                    if(pos!="" && pos1<=arrayStickers.length ){
+                    if(pos!="" && pos1<=arrayBgUrl.length ){
                         deleteCheck = vSection.childNodes[pos1]
                         nodoDelete = section.querySelector('.resultado')
                         nodoDelete.removeChild(deleteCheck)
+                        printDivImg()
                     }else if(pos=="") {
                         alert('por favor ingresa la position')
                     }
-                    else if(pos1>=arrayStickers.length){
+                    else if(pos1>=arrayBgUrl.length){
                         alert('ingresaste una posicion no valida')
                     }
                     break;
