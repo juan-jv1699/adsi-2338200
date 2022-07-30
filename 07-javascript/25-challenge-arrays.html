@@ -11,6 +11,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap" rel="stylesheet">
 </head>
 <style>
+    h2 {
+        color: black;
+    }
     ul {
         margin: 0 0;
         display: flex;
@@ -115,6 +118,7 @@
         filter: grayscale(0.7);
     }
     .resultado {
+        border-radius: 25px;
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
@@ -125,6 +129,20 @@
         overflow-x: hidden;
         overflow-x: scroll;
         margin: 15px auto;
+    }
+    .resultado::-webkit-scrollbar {
+        -webkit-appearance: none;
+    } 
+    .resultado::-webkit-scrollbar:vertical {
+        width:10px;
+    }
+
+    .resultado::-webkit-scrollbar-button:increment,.resultado::-webkit-scrollbar-button {
+        display: none;
+    } 
+
+    .resultado::-webkit-scrollbar:horizontal {
+        height: 10px;
     }
     .finalPrint {
         margin: 1px 2px;
@@ -175,7 +193,7 @@
                     <option value="especificPosition">posicion especifica</option>
                 </select>
                 <br>
-                 ingrese la posicion
+                <h2>ingrese la posicion</h2>
                  <input type="number" id="especific">
                  <br>
                  <div class="btns">
@@ -214,6 +232,7 @@
         var arrayBgUrl = []
         var pos
         var pos1
+        var positionState
 
         var objetoVis = ""
 
@@ -227,65 +246,86 @@
                 }
                 selectionIcon = li.style.background
                 numPosition = li.innerHTML
-                console.log(selectionIcon)
                 toggleDynamic(li)
             }
         });
+        //buttons
         
+        //btn add a element 
         btnAdd.addEventListener('click', ()=>{
-            swtSelectspos()
-            console.log(arrayBgUrl.valueOf())
-            printDivImg()
+            if(btnAdd.classList[2]!='disabled'){
+                swtSelectspos()
+                if(positionState==true){
+                    printDivImg()
+                }
+            }
+            else {
+                alert('por favor seleccione un item y una posicion, luego vuelvalo a intentar')
+            }
         })
+        //btn delete element
         btnDelete.addEventListener('click', ()=>{
-            swtSelectsneg()
-            console.log(arrayBgUrl.valueOf())
-            dropDivimg()
+            if (btnDelete.classList[2]!='disabled') {
+                swtSelectsneg()
+                if (positionState== true){
+                    dropDivimg()
+                }
+            } else {
+                alert('por favor seleccione un item y una posicion, luego vuelvalo a intentar')
+            }
         })
-        console.log(select.value)
         
         //functions
         function swtSelectspos(){
-            pos = positionEsp.value
-            pos1= pos-1
             switch(select.value){
                 case 'firsOne':
-                    arrayBgUrl.unshift(selectionIcon)
-                    break;
-                    case 'lastOne':
+                        arrayBgUrl.unshift(selectionIcon)
+                        positionState=true
+                        break;
+                case 'lastOne':
                         arrayBgUrl.push(selectionIcon)
+                        positionState=true
                         break;
                 case 'especificPosition':
-                    if(pos!="" && pos1<=arrayBgUrl.length ){
-                        arrayBgUrl.splice(pos1,0,selectionIcon)
-                    }else if(pos=="") {
-                        alert('por favor ingresa la position')
-                    }
-                    else if(pos1>=arrayBgUrl.length){
-                        alert('ingresaste una posicion no valida')
-                    }
-                    break;
+                        pos = positionEsp.value
+                        pos1= pos-1
+                        if(pos!="" && pos1<=arrayBgUrl.length && pos1>=0){
+                            arrayBgUrl.splice(pos1,0,selectionIcon)
+                            positionState=true
+                        }else if(pos=="") {
+                            alert('por favor ingresa la position')
+                            positionState=false
+                        }
+                        else if(pos1<0 || pos>=arrayBgUrl.length){
+                            alert('ingresaste una posicion no valida')
+                            positionState = false
+                        }
+                        break;
             }
         }
         function swtSelectsneg(){
-            pos = positionEsp.value
-            let pos1= pos-1
-            console.log(pos1)
             switch(select.value){
                 case 'firsOne':
                     arrayBgUrl.shift(selectionIcon)
+                    positionState=true
                     break;
                 case 'lastOne':
                     arrayBgUrl.pop(selectionIcon)
+                    positionState=true
                     break;
                 case 'especificPosition':
-                    if(pos!="" && pos1<=arrayBgUrl.length ){
+                    pos = positionEsp.value
+                    let pos1= pos-1 
+                    if(pos!="" && pos<=arrayBgUrl.length && pos1>=0){
+                        positionState=true
                         arrayBgUrl.splice(pos1,1,)
                     }else if(pos=="") {
                         alert('por favor ingresa la position')
+                        positionState=false
                     }
-                    else if(pos1>=arrayBgUrl.length){
+                    else if(pos>=arrayBgUrl.length || pos1<0){
                         alert('ingresaste una posicion no valida')
+                        positionState=false
                     }
                     break;
                 }
@@ -331,7 +371,7 @@
                     break;
                 case 'especificPosition':
                     pos1=pos-1
-                    if(pos!="" && pos1<=arrayBgUrl.length ){
+                    if(pos!="" && pos1<=arrayBgUrl.length){
                         deleteCheck = vSection.childNodes[pos1]
                         nodoDelete = section.querySelector('.resultado')
                         nodoDelete.removeChild(deleteCheck)
@@ -339,7 +379,7 @@
                     }else if(pos=="") {
                         alert('por favor ingresa la position')
                     }
-                    else if(pos1>=arrayBgUrl.length){
+                    else if(pos>=arrayBgUrl.length){
                         alert('ingresaste una posicion no valida')
                     }
                     break;

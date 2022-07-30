@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example</title>
+    <link rel="stylesheet" href="css/menu.css">
+    <style> 
+        div#blockStats{
+            height: 200px; 
+            width: 420px;
+            border: solid 2px skyblue;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+        .stat{
+            background: rgb(240, 214, 180);
+            border-radius: 25px;
+            height: 70px;
+            width: 180px;
+            border: rgb(0, 0, 0) solid 1px;
+            margin: 10px;
+        }
+        /* This is the section where we gonna contain the interactive car */
+
+        .blockCar{
+            display: flex;
+            justify-content: space-between;
+            height: 250px;
+            width: 380px;
+            border: solid 2px orange;
+            margin: 0px 20px;
+
+        }
+        .btn{
+            height: 40px;
+            width: 30px;
+            margin: 105px 0;
+        }
+        .btn1{
+            border-radius: 0 100% 100% 0;
+        }
+        .btn2{
+            border-radius: 100% 0 0 100%;
+        }
+        /* This is the place where we gonna put the actions buttons */
+        .blockBtn{
+            border-radius: 0 0 40px 40px;
+            height: 150px;
+            width: 420px;
+            border: solid 2px rgb(0, 255, 0);
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-auto-rows: minmax();
+        }
+        
+        .btnActions{
+            height: 100%;
+            width: 100%;
+            border: solid red 2px;
+        }
+        .btnAct01{
+            grid-column: 1;
+            grid-row: 1;
+            border: solid blue 2px;
+
+        }
+        .btnAct02{
+            grid-column: 2;
+            grid-row: 1/3;
+            border: solid rgb(255, 221, 26) 2px;
+        }
+        .btnAct03{
+            grid-column: 3;
+            grid-row: 1;
+        }
+        .btnAct04{
+            grid-column: 1;
+            grid-row: 2;
+        }
+        .btnAct05{
+            grid-column: 3;
+            grid-row: 2;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <a href="index.html">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
+                  </svg>
+            </a>
+            <h1>Prueba Vehiculo</h1>
+        </header>
+        <section>
+            <div id="blockStats">
+                <div class="stat"></div>
+                <div class="stat"></div>
+                <div class="stat"></div>
+                <div class="stat"></div>
+            </div>
+            <div class="blockCar">
+                <button class="btn btn1"></button>
+                <button class="btn btn2"></button>
+            </div>
+            <div class="blockBtn">
+                <div class="btnActions btnAct01"></div>
+                <div class="btnActions btnAct02"></div>
+                <div class="btnActions btnAct03"></div>
+                <div class="btnActions btnAct04"></div>
+                <div class="btnActions btnAct05"></div>
+            </div>
+        </section>
+        </nav>
+    </main>
+</body>
+</html>

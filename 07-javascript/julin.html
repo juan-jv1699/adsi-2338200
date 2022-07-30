@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challengue Arrays</title>
+    <link rel="stylesheet" href="css/menu.css">
+    <style>
+        
+        main{
+            height: 850px;
+        }
+        .container{
+            background: url(images/imagesJulin/fondo.svg) no-repeat center;
+            margin: 0 auto;
+            width: 420px;
+            height: 700px;
+            
+            
+        }
+        article{
+            display: grid;
+            grid-template-columns: repeat(4,80px);
+            left: 35px;
+            top: 20px;
+            position: relative;
+            gap: 13px;
+            
+            
+        }
+        .carta{
+            filter: grayscale(1);
+            height: 80px;
+            width: 75px;
+            cursor: pointer;
+            transition: all 0.3s ease-in;
+        }
+        .carta:hover{
+            filter: grayscale(0.0);
+            transform: scale(1.2);
+        }
+        .active{
+            filter: grayscale(0.0);
+            transform: scale(1.2);
+        }
+        .carta1{
+            background: url(images/imagesJulin/magohielo.svg)no-repeat;
+        }
+        .carta2{
+            background: url(images/imagesJulin/pekka.svg)no-repeat;
+            right: 7px;
+            position: relative;
+        }
+        .carta3{
+            background: url(images/imagesJulin/gouli.svg)no-repeat;
+            right: 8px;
+            top: 10px;
+            position: relative;
+        }
+        .carta4{
+            background: url(images/imagesJulin/golem.svg)no-repeat;
+            right: 8px;
+            top: 15px;
+            position: relative;
+        }
+        .carta5{
+            background: url(images/imagesJulin/magofire.svg)no-repeat;
+        }
+
+        .carta6{
+            background: url(images/imagesJulin/bombardero.svg)no-repeat;
+        }
+        .carta7{
+            background: url(images/imagesJulin/leñador.svg)no-repeat;
+            right: 8px;
+            top: 7px;
+            position: relative;
+        }
+        .carta8{
+            background: url(images/imagesJulin/fantasma.svg)no-repeat;
+            left: 3px;
+            top: 5PX;
+            position: relative;
+        }
+        .tittle{
+            position: absolute;
+            margin-left: 50px;
+            margin-top: -15px;
+            font-size: 16px;
+            background-color: #00000090;
+            border-radius:50px ;
+            padding: 4px;
+        }
+        .select{
+            position: relative;
+            left: 50px;
+            top: 15px;
+            border-radius:50px ;
+            width: 200px;
+            text-align: center;
+            background-color: #00000090;
+        }
+        section nav.options{
+            display: flex;
+            justify-content: center;
+            flex-direction: row;
+            height: 54px;
+        }
+        section nav.options input[type=checkbox],section nav.options input[type=number]{
+            -webkit-appearance: none;
+            transition: all .4s ease;
+            cursor: pointer;
+            height: 30px;
+            width: 73px;
+            border: none;
+            background-color: white;
+            outline: none;
+
+        }
+        section nav.options input[type=checkbox].position{
+            background: url(images/imagesJulin/FIRST.svg)no-repeat center;
+        }
+        section nav.options input[type=checkbox].position:checked{
+            background: url(images/imagesJulin/LAST.svg)no-repeat center;
+        }
+        section nav.options input[type=checkbox].action{
+            background: url(images/imagesJulin/add.svg)no-repeat center;
+        }
+        section nav.options input[type=checkbox].action:checked{
+            background: url(images/imagesJulin/remove.svg)no-repeat center;
+        }
+        section nav.options input[type=number].nposition{
+            background: url(images/imagesJulin/position.svg)no-repeat center;
+            border-radius: 50px;
+            text-align: center;
+        }
+        .btn_agregar{
+            background: url(images/imagesJulin/agregar.svg) no-repeat;
+            width: 60px;
+            height: 60px;
+            margin: 0 auto;
+            border: none;
+            display: flex;
+            cursor: pointer;
+            
+        }
+    
+        .btn_remove{
+            background: url(images/imagesJulin/remover.svg) no-repeat;
+            width: 60px;
+            height: 60px;
+            margin: 0 auto;
+            border:none;
+            left: 4px;
+            position: relative;
+            display: flex;
+            cursor: pointer;
+            
+        }
+        footer{
+            display: flex;
+            position:relative;
+            flex-wrap: wrap;
+            left: 30px;
+            top:57px;
+            overflow-y: auto;
+            width: 85%;
+            height: 25%;
+            
+        }
+        .cartStyle{
+            height: 80px;
+            width: 75px;
+        }
+       
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <a href="index.html">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.707-10.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L9.414 11H13a1 1 0 100-2H9.414l1.293-1.293z" clip-rule="evenodd" />
+                </svg>
+            </a>
+            <h1>Challengue Arrays</h1>
+        </header>
+        <div class="container">
+            <header>
+                <h1>Arrays</h1>
+            </header>
+            <h1 class="tittle">Select the cart:</h1>
+            <article>
+                
+                <div class="carta carta1"></div>
+                <div class="carta carta2"></div>
+                <div class="carta carta3"></div>
+                <div class="carta carta4"></div>
+                <div class="carta carta5"></div>
+                <div class="carta carta6"></div>
+                <div class="carta carta7"></div>
+                <div class="carta carta8"></div>
+            </article>
+            <section>
+                <h1 class="select">Select option:</h1>
+                <nav class="options">
+                    <input class="position" type="checkbox">
+                    <input class="action" type="checkbox">
+                    <input class="nposition" type="number" min="0" max="99">
+                </nav>
+                <button class="btn_agregar"></button>
+                
+            </section>
+            <footer class="footer">
+
+            </footer>
+        </div>
+    </main>
+    <script>
+        var carts
+        const agregar = document.querySelector('.action')
+        const cartas = document.querySelectorAll('.carta')
+        const btn_agregar = document.querySelector('.btn_agregar')
+        const footer = document.querySelector('.footer')
+        const position = document.querySelector('.position')
+        // Globlal Variables
+
+        cartas.forEach(element =>{
+            element.addEventListener('click',(e)=>{
+                removeAnimation()
+                element.classList.add('active')
+                 carts= (element.classList[1])
+
+            })
+        })
+        function removeAnimation (){
+            cartas.forEach(element=>{
+                element.classList.remove('active')
+            })
+        }
+        agregar.addEventListener('click',(e)=>{
+            
+            if(agregar.checked == true){
+                btn_agregar.classList.remove('btn_agregar')
+                btn_agregar.classList.add('btn_remove')
+                
+                
+               
+
+            }else{
+                btn_agregar.classList.remove('btn_remove')
+                btn_agregar.classList.add('btn_agregar')
+            }
+        })
+        btn_agregar.onclick = () =>{
+            let div = `<div class="${carts} cartStyle"></div>`
+            if(agregar.checked != true){
+                footer.innerHTML += div
+            }else if(agregar.checked == true){
+                //este es para la primera posicion
+                let divDelete = footer.childNodes[1]
+                footer.removeChild(divDelete);
+                //este seria para la ultima
+                divDelete = footer.childNodes[(footer.childNodes.length - 1)]
+                footer.removeChild(divDelete);
+            }
+        }
+        function searchContentFooter(){
+
+        }
+       
+    </script>
+</body>
+</html>
