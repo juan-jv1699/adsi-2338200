@@ -10,7 +10,7 @@
         div#blockStats{
             height: 200px; 
             width: 420px;
-            border: solid 2px skyblue;
+            /*border: solid 2px skyblue;*/
             display: grid;
             grid-template-columns: 1fr 1fr;
         }
@@ -19,37 +19,61 @@
             border-radius: 25px;
             height: 70px;
             width: 180px;
-            border: rgb(0, 0, 0) solid 1px;
+            /* border: rgb(0, 0, 0) solid 1px; */
             margin: 10px;
         }
         /* This is the section where we gonna contain the interactive car */
 
         .blockCar{
-            display: flex;
-            justify-content: space-between;
             height: 250px;
             width: 380px;
             border: solid 2px orange;
             margin: 0px 20px;
 
         }
+        .image,
+        .landscape {
+            position: relative;
+            height: 250px;
+            width: 380px;
+            margin: 0px 0px;
+            z-index: 0;
+            bottom: 250px;
+        }
+        figure.landscape {
+            border: solid blueviolet 1px;
+            position: absolute;
+            top: 300px;
+            width: 1450px;
+        }
         .btn{
+            position: relative;
             height: 40px;
             width: 30px;
             margin: 105px 0;
+            z-index: 1;
+
         }
         .btn1{
+            position: relative;
+            background: rgba(255, 0, 0, 0.26);
             border-radius: 0 100% 100% 0;
         }
         .btn2{
+            position: relative;
+            bottom: 755px;
+            left: 350px;
+            background: rgba(251, 255, 0, 0.26);
             border-radius: 100% 0 0 100%;
         }
         /* This is the place where we gonna put the actions buttons */
         .blockBtn{
+            top: 558px;
+            position: absolute;
             border-radius: 0 0 40px 40px;
             height: 150px;
             width: 420px;
-            border: solid 2px rgb(0, 255, 0);
+            /* border: solid 2px rgb(0, 255, 0); */
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
             grid-auto-rows: minmax();
@@ -58,12 +82,12 @@
         .btnActions{
             height: 100%;
             width: 100%;
-            border: solid red 2px;
+            /* border: solid red 2px; */
         }
         .btnAct01{
             grid-column: 1;
             grid-row: 1;
-            border: solid blue 2px;
+            /* border: solid blue 2px; */
 
         }
         .btnAct02{
@@ -104,6 +128,14 @@
             </div>
             <div class="blockCar">
                 <button class="btn btn1"></button>
+                <img class="image" src="" alt="">
+                <figure class="landscape">
+                    <div class="layer00"></div>
+                    <div class="layer01"></div>
+                    <div class="layer02"></div>
+                    <div class="layer03"></div>
+                    <div class="layer04"></div>
+                </figure>
                 <button class="btn btn2"></button>
             </div>
             <div class="blockBtn">

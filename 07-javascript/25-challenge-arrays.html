@@ -119,16 +119,22 @@
     }
     .resultado {
         border-radius: 25px;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
         gap: 25px;
         height: 70px;
         width: 380px;
         background: white;
-        overflow-x: hidden;
-        overflow-x: scroll;
+        overflow: auto;
         margin: 15px auto;
+        white-space: nowrap;
+        /* display: flex;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+        gap: 30px;
+        height: 81px;
+        margin-top: 40px;
+        flex-direction: row; */
     }
     .resultado::-webkit-scrollbar {
         -webkit-appearance: none;
@@ -145,6 +151,7 @@
         height: 10px;
     }
     .finalPrint {
+        display: inline-block;
         margin: 1px 2px;
         height: 50px;
         width: 50px;
