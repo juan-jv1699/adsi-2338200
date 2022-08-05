@@ -61,7 +61,7 @@
             height: 280px;
             right: 10px;
             top: 160px;
-            overflow: hidden;
+            overflow: hidden; 
         }
         figure.landscape div{
             position: absolute;
@@ -391,7 +391,7 @@
         var move= false;
         //elements
         const main=document.querySelector('main')
-        const lands=document.querySelector('figure.landscape')
+        const lands=document.getElementsByTagName('figure')
         //buttons
         const btnDarkMode = document.querySelector('button.darkMode');
         const btnPrev = document.querySelector('button.Prev');
@@ -422,9 +422,6 @@
                 color.innerText=this.attributes[index].color
                 image.setAttribute('src', this.attributes[index].image)
 
-            },
-            darkMode: function() {
-                main.classList.toggle('darkMode')
             },
             start: function() {
                 if (!engine) {
@@ -462,11 +459,16 @@
                 }
             }  
         }
+
+
+        function darkMode() {
+                main.classList.toggle('darkMode')
+            }
         //-------
         vehicle.showAttributes(0)
         // Actions
         btnDarkMode.onclick=()=>{
-            vehicle.darkMode()
+            darkMode()
         }
         btnPrev.onclick=()=>{
             if(cindex>0){

@@ -7,6 +7,16 @@
     <title>Example</title>
     <link rel="stylesheet" href="css/menu.css">
     <style> 
+         .darkMode{
+            position: absolute;
+            /* left: 100px; */
+            transform: translate(350px,-80px);
+            background: url(images/vehicleObject/lightMode/btn-darkMode.svg) no-repeat center;
+            display: inline-block;
+            border: solid 1px blueviolet;
+            width: 60px;
+            height: 60px;
+        } 
         div#blockStats{
             height: 200px; 
             width: 420px;
@@ -31,45 +41,50 @@
             margin: 0px 20px;
 
         }
-        .image,
+        .vehicleObject {
+            position: relative;
+            width: 150px;
+            height: 70px;
+            border: red 2px;
+            left: 160px;
+            top: 100px; 
+            transform: translateX(-50%);
+        }
         .landscape {
             position: relative;
             height: 250px;
-            width: 380px;
+            width: 1024px;
             margin: 0px 0px;
             z-index: 0;
             bottom: 250px;
-        }
-        figure.landscape {
             border: solid blueviolet 1px;
-            position: absolute;
-            top: 300px;
-            width: 1450px;
         }
         .btn{
             position: relative;
             height: 40px;
             width: 30px;
             margin: 105px 0;
-            z-index: 1;
+            z-index: 20;
 
         }
         .btn1{
             position: relative;
             background: rgba(255, 0, 0, 0.26);
             border-radius: 0 100% 100% 0;
+            background: url(images/vehicleObject/lightMode/btn-next.svg) no-repeat center;
         }
         .btn2{
             position: relative;
-            bottom: 755px;
+            bottom: 500px;
             left: 350px;
             background: rgba(251, 255, 0, 0.26);
             border-radius: 100% 0 0 100%;
+            z-index: 30;
+            background: url(images/vehicleObject/lightMode/btn-prev.svg) no-repeat center;
         }
         /* This is the place where we gonna put the actions buttons */
         .blockBtn{
             top: 558px;
-            position: absolute;
             border-radius: 0 0 40px 40px;
             height: 150px;
             width: 420px;
@@ -82,28 +97,30 @@
         .btnActions{
             height: 100%;
             width: 100%;
-            /* border: solid red 2px; */
         }
-        .btnAct01{
+        .play{
             grid-column: 1;
             grid-row: 1;
-            /* border: solid blue 2px; */
-
+            background: url(images/vehicleObject/lightMode/btn-turnOn.svg) no-repeat center;
         }
-        .btnAct02{
+        .pause{
             grid-column: 2;
             grid-row: 1/3;
             border: solid rgb(255, 221, 26) 2px;
+            background: url(images/vehicleObject/lightMode/btn-stop.svg) no-repeat center;
         }
-        .btnAct03{
+        .stop{
             grid-column: 3;
             grid-row: 1;
+            background: url(images/vehicleObject/lightMode/btn-turnOff.svg) no-repeat center;
         }
-        .btnAct04{
+        .backward{
             grid-column: 1;
             grid-row: 2;
+            background: url(images/vehicleObject/lightMode/btn-backward.svg) no-repeat center;
         }
-        .btnAct05{
+        .forward{
+            background: url(images/vehicleObject/lightMode/btn-fordward.svg) no-repeat center;
             grid-column: 3;
             grid-row: 2;
         }
@@ -118,17 +135,18 @@
                   </svg>
             </a>
             <h1>Prueba Vehiculo</h1>
+            <button class="darkMode"></button>
         </header>
         <section>
             <div id="blockStats">
-                <div class="stat"></div>
-                <div class="stat"></div>
-                <div class="stat"></div>
-                <div class="stat"></div>
+                <div class="stat brand"></div>
+                <div class="stat refer"></div>
+                <div class="stat model"></div>
+                <div class="stat color"></div>
             </div>
             <div class="blockCar">
                 <button class="btn btn1"></button>
-                <img class="image" src="" alt="">
+                <img class="vehicleObject" src="images/vehicleObject/car01.png" alt="">
                 <figure class="landscape">
                     <div class="layer00"></div>
                     <div class="layer01"></div>
@@ -139,14 +157,50 @@
                 <button class="btn btn2"></button>
             </div>
             <div class="blockBtn">
-                <div class="btnActions btnAct01"></div>
-                <div class="btnActions btnAct02"></div>
-                <div class="btnActions btnAct03"></div>
-                <div class="btnActions btnAct04"></div>
-                <div class="btnActions btnAct05"></div>
+                <div class="btnActions btnAct01 play"></div>
+                <div class="btnActions btnAct02 pause"></div>
+                <div class="btnActions btnAct03 stop"></div>
+                <div class="btnActions btnAct05 backward"></div>
+                <div class="btnActions btnAct04 forward"></div>
             </div>
         </section>
-        </nav>
     </main>
+    <script>
+        // Variables y constantes
+        var carIndex=0
+        var onMove = false
+        var carTurnOff = false
+        // Nodos.
+        var btnDarkMode = document.querySelector('.darkMode');
+        var brand = document.querySelector('.brand');
+        var refer = document.querySelector('.refer');
+        var model = document.querySelector('.model');
+        var color = document.querySelector('.color');
+        var btnNext = document.querySelector('div.blockCar button.btn2');
+        var btnBefore = document.querySelector('div.blockCar button.btn1');
+        var landscape = document.querySelector('.landscape'); 
+        var play = document.querySelector('.play');
+        var pause= document.querySelector('.pause');
+        var stop = document.querySelector('.stop');
+        var backWard = document.querySelector('.backward');
+        var forward = document.querySelector('.forward');
+
+        var objectCar={
+            options: [
+            {brand:'Honda', refer:'Civic', model:'Type R 2021', color:'orange', image:'images/vehicleObject/car01.png'},
+                {brand:'Mazda', refer:'RX7', model:'1999', color:'green', image:'images/vehicleObject/car02.png'},
+                {brand:'BMW', refer:'M3', model:'2004', color:'blue', image:'images/vehicleObject/car03.png'},
+                {brand:'Porsche', refer:'GTR 2', model:'2015', color:'red', image:'images/vehicleObject/car04.png '},
+            ]
+        }
+        
+        landscape.onclick=()=>{
+            alert('Si Funciona!!!')
+        }
+        
+
+
+
+    </script>
 </body>
 </html>
