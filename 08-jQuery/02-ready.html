@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ready</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/mainStyle.css">
+</head>
+<body>
+    <main>
+        <section class="container">
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <div class="card text-center mx-auto">
+                        <div class="card-body">
+                            <nav class="breadcrumb">
+                                <a class="breadcrumb-item" href="/index.html">Main menu</a>
+                                <span class="breadcrumb-item active" aria-current="page">Ready</span>
+                            </nav>
+                            <h4 class="card-title">Ready</h4>
+                            <p class="card-text">
+                            <!-- Space to work -->
+                                <h3></h3>
+                            </p>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="js/jquery-3.6.0.min.js">
+    </script>
+    <script>
+        // large
+        $(document).ready(function () {
+            $('h3').html("<i>jQuery</i> is Ready 😊")
+        });
+        //short
+        $(function () {
+            $('h3').after("<p>The document was loaded 😍</p>")
+        });
+
+    </script>
+</body>
+</html>

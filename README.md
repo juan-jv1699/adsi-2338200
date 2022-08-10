@@ -10,5 +10,7 @@ Repositorio del tecnólogo en análisis y desarrollo de sistemas de información
 | 5. PUG        | HTML Preprocessor                 | [open folder](05-pug/)        |
 | 6. SASS       | CSS Preprocessor                  | [open folder](06-sass/)       |
 | 7. Javascript | Programing language (client side) | [open folder](07-javascript/) |
+| 8. jQuery     | Library Javascript                | [open folder](08-jQuery/)     |
+| 11. PHP       | Serve programing language         | [open folder](11-php)         |
 -----
 ![SENA](https://upload.wikimedia.org/wikipedia/commons/8/83/Sena_Colombia_logo.svg)
