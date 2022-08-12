@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?="Template"?></title>
+    <title><?="Forms"?></title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 <body>
@@ -19,10 +19,30 @@
     <main class="container">
     <div class="row">
         <div class="col-6 offset-3 text-center">
-            <?php echo "<h1 class='mt-5'>Variables</h1>";?>
+            <?php echo "<h1 class='mt-5'>Forms Get</h1>";?>
             <hr>
             <!-- Space to work -->
-            
+            <form action="" method="GET">
+					<div class="mb-3">
+						<label for="name" class="form-label">Full Name:</label>
+						<input type="text" class="form-control" name="name" id="name">
+					</div>
+					<div class="mb-3">
+						<label for="email" class="form-label">Email:</label>
+						<input type="email" class="form-control" name="email" id="email">
+					</div>
+					<div class="mb-3">
+						<input type="submit" class="btn btn-success" value="Send Form">
+						<input type="reset" class="btn btn-light" value="Clear Form">
+					</div>
+				</form>
+				<?php if ($_GET): ?>
+					<div class="alert alert-success">
+						<strong>Full Name:</strong> <?php echo $_GET['name']; ?>
+						<br>
+						<strong>Email:</strong> <?php echo $_GET['email']; ?>
+					</div>
+				<?php endif ?>
         </div>
     </div>
     </main>

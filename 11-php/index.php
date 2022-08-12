@@ -10,26 +10,7 @@
 <body>
     <nav class="navbar navbar-expand-lg sticky-top" style="background-color: #e3f2fd;">
       <div class="container-fluid">
-        <a class="navbar-brand" href="index.php">PHP & Bootstrap 5</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="·">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="01-hello-world.php">01-hello-world</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link " aria-current="page" href="02-info.php">02-info</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link " aria-current="page" href="03-comments.php">03-comments</a>
-            </li>
-          </ul>
-        </div>
+        <a class="navbar-brand col"  href="https://www.php.net/manual/es/intro-whatis.php">PHP </a><a class="navbar-brand col" href="https://getbootstrap.com/">& Bootstrap 5</a>
       </div>
     </nav>
     <main class="container">
@@ -58,6 +39,20 @@
                 <a href="18-loop-foreach.php" class="btn btn-outline-info text-start"><span class="badge rounded-pill bg-dark">18</span> loop-foreach</a>
                 <a href="19-functions.php" class="btn btn-outline-info text-start"><span class="badge rounded-pill bg-dark">19</span> functions</a>
                 <a href="20-functions-params.php" class="btn btn-outline-info text-start"><span class="badge rounded-pill bg-dark">20</span> functions-params</a>
+                <a href="21-functions-return.php" class="btn btn-outline-info text-start"><span class="badge rounded-pill bg-dark">21</span> functions-return</a>
+                <a href="22-forms-get.php" class="btn btn-outline-info text-start"><span class="badge rounded-pill bg-dark">22</span> forms-get</a>
+                <a href="23-forms-post.php" class="btn btn-outline-info text-start"><span class="badge rounded-pill bg-dark">23</span> forms-post</a>
+                <a href="24-date-time.php" class="btn btn-outline-info text-start"><span class="badge rounded-pill bg-dark">24</span> date-time</a>
+                <a href="25-challenge-dates.php" class="btn btn-outline-info text-start"><span class="badge rounded-pill bg-dark">25</span> challenge-dates</a>
+                <a href="26-ssi.php" class="btn btn-outline-info text-start"><span class="badge rounded-pill bg-dark">26</span> ssi</a>
+                <a href="27-file-text.php" class="btn btn-outline-info text-start"><span class="badge rounded-pill bg-dark">27</span> file-text</a>
+                <a href="28-upload-files.php" class="btn btn-outline-info text-start"><span class="badge rounded-pill bg-dark">28</span> upload-files</a>
+                <a href="29-cookies.php" class="btn btn-outline-info text-start"><span class="badge rounded-pill bg-dark">29</span> cookies</a>
+                <a href="30-sessons.php" class="btn btn-outline-info text-start"><span class="badge rounded-pill bg-dark">30</span> sessons</a>
+                <a href="31-send-mail.php" class="btn btn-outline-info text-start"><span class="badge rounded-pill bg-dark">31</span> send-mail</a>
+                <a href="32-exceptions.php" class="btn btn-outline-info text-start"><span class="badge rounded-pill bg-dark">32</span> exceptions</a>
+                <a href="33-filters.php" class="btn btn-outline-info text-start"><span class="badge rounded-pill bg-dark">33</span> filters</a>
+
             </div>
         </div>
     </div>

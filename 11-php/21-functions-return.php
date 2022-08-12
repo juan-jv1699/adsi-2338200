@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?="Template"?></title>
+    <title><?="Functions"?></title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 <body>
@@ -19,10 +19,23 @@
     <main class="container">
     <div class="row">
         <div class="col-6 offset-3 text-center">
-            <?php echo "<h1 class='mt-5'>Variables</h1>";?>
+            <?php echo "<h1 class='mt-5'>Functions Return</h1>";?>
             <hr>
             <!-- Space to work -->
-            
+            <?php 
+					function show_name($name) {
+						return $name;
+					}
+					function show_result($n1, $n2) {
+						return $n1 * $n2;
+					}
+				?>
+				<div class="mx-4 p-4 bg-warning text-dark rounded">
+				  <div class="container">
+				    <h1 class="display-4"><?php echo show_name('Hideo Kojima'); ?></h1>
+				    <p class="lead"> 23 * 15 = <?php echo show_result(23, 15); ?></p>
+				  </div>
+				</div>
         </div>
     </div>
     </main>
