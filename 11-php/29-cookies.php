@@ -1,10 +1,16 @@
+<?php 
+// Create Cookie:
+setcookie('name', 'Jeremias Springfield', time()+60);
+// Delete Cookie:
+//setcookie('name', 'Jeremias Springfield', time()-60);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?="File-Text"?></title>
+    <title><?="Cookies"?></title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 <body>
@@ -19,33 +25,22 @@
     <main class="container">
     <div class="row">
         <div class="col-6 offset-3 text-center">
-            <?php echo "<h1 class='mt-5'>File text</h1>";?>
+            <?php echo "<h1 class='mt-5'>Cookies</h1>";?>
             <hr>
             <!-- Space to work -->
-            <div class="alert alert-info text-justify">
-				      <?php 
-				      	$file = fopen('text/lorem.txt', 'r') 
-				      	or exit("can't open");
-
-				      	while (!feof($file)) {
-				      		echo fgets($file);
-				      	}
-				      	fclose($file);
-				      ?>
-				      </div>
-				      <br>
-				      <br>
-				      <div class="alert alert-dark text-justify">
-				      <?php 
-				      	$file = fopen('text/lorem.txt', 'r') 
-				      	or exit("can't open");
-              
-				      	while (!feof($file)) {
-				      		echo fgetc($file).'-';
-				      	}
-				      	fclose($file);
-				      ?>
-				    </div>
+            <div class="mt-4 p-5 bg-primary text-white rounded">
+					<small> Show Cookies: Go to console/storage/cookies</small>
+					<?php if (isset($_COOKIE['name'])): ?>
+						<p class="lead"> 
+							<strong>name:</strong>
+							<?php echo $_COOKIE['name'] ?> 
+						</p>
+					<?php else: ?>
+						<p class="lead">
+							Welcome Guest!
+						</p>
+					<?php endif ?>
+				</div>
         </div>
     </div>
     </main>

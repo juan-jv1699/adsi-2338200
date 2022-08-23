@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?="File-Text"?></title>
+    <title><?="Exceptions"?></title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 <body>
@@ -19,33 +19,37 @@
     <main class="container">
     <div class="row">
         <div class="col-6 offset-3 text-center">
-            <?php echo "<h1 class='mt-5'>File text</h1>";?>
+            <?php echo "<h1 class='mt-5'>Exceptions</h1>";?>
             <hr>
             <!-- Space to work -->
-            <div class="alert alert-info text-justify">
-				      <?php 
-				      	$file = fopen('text/lorem.txt', 'r') 
-				      	or exit("can't open");
-
-				      	while (!feof($file)) {
-				      		echo fgets($file);
-				      	}
-				      	fclose($file);
-				      ?>
-				      </div>
-				      <br>
-				      <br>
-				      <div class="alert alert-dark text-justify">
-				      <?php 
-				      	$file = fopen('text/lorem.txt', 'r') 
-				      	or exit("can't open");
-              
-				      	while (!feof($file)) {
-				      		echo fgetc($file).'-';
-				      	}
-				      	fclose($file);
-				      ?>
-				    </div>
+            <form action="" method="POST">
+					<div class="mb-3">
+						<input type="number" class="form-control" name="age" placeholder="Enter your age">
+					</div>
+					<div class="mb-3">
+						<input type="submit" value="Validate" class="btn btn-success">
+					</div>
+				</form>
+				<?php 
+						function validate_age($age) {
+							if ($age < 18) {
+								throw new Exception("You can't vote!");
+							}
+							return true;
+						}
+					if ($_POST) {
+						try {
+							validate_age($_POST['age']);
+							echo '<div class="alert alert-success">
+									You can vote!
+								  </div>';
+						} catch (Exception $e) {
+							echo '<div class="alert alert-danger">
+									Error: '.$e->getMessage().'
+								  </div>';
+						}
+					}
+				?>
         </div>
     </div>
     </main>

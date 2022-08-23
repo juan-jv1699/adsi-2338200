@@ -1,10 +1,11 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?="File-Text"?></title>
+    <title><?="Sessons"?></title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 <body>
@@ -19,33 +20,34 @@
     <main class="container">
     <div class="row">
         <div class="col-6 offset-3 text-center">
-            <?php echo "<h1 class='mt-5'>File text</h1>";?>
+            <?php echo "<h1 class='mt-5'>Sessons</h1>";?>
             <hr>
             <!-- Space to work -->
-            <div class="alert alert-info text-justify">
-				      <?php 
-				      	$file = fopen('text/lorem.txt', 'r') 
-				      	or exit("can't open");
+            <div class="mt-4 p-5 bg-dark text-white rounded">
+					<?php 
+						if ($_POST) {
+							unset($_SESSION['visits']);
+							session_destroy();
+						}	
+					?>
 
-				      	while (!feof($file)) {
-				      		echo fgets($file);
-				      	}
-				      	fclose($file);
-				      ?>
-				      </div>
-				      <br>
-				      <br>
-				      <div class="alert alert-dark text-justify">
-				      <?php 
-				      	$file = fopen('text/lorem.txt', 'r') 
-				      	or exit("can't open");
-              
-				      	while (!feof($file)) {
-				      		echo fgetc($file).'-';
-				      	}
-				      	fclose($file);
-				      ?>
-				    </div>
+					<?php if (isset($_SESSION['visits'])): ?>
+						<?php $_SESSION['visits']++; ?>
+					<?php else: ?>
+						<?php $_SESSION['visits'] = 1; ?>
+					<?php endif ?>
+					<p class="lead">
+						<strong>
+							You have visited this page: 
+						</strong>
+						<?php echo $_SESSION['visits']; ?>
+                        <?php echo ($_SESSION['visits']==1)?"time":"times";?>
+					</p>
+					<form action="" method="POST">
+						<input type="submit" value="Close Session" class="btn btn-danger" name="delete">
+					</form>
+				</div>
+            
         </div>
     </div>
     </main>
