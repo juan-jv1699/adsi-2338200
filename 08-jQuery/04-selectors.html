@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selectors</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/mainStyle.css">
+    <style>
+        .display-1 {
+            font-size: 8rem;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section class="container">
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <div class="card text-center mx-auto">
+                        <div class="card-body">
+                            <nav class="breadcrumb">
+                                <a class="breadcrumb-item" href="/index.html">Main menu</a>
+                                <span class="breadcrumb-item active" aria-current="page">Selectors</span>
+                            </nav>
+                            <h4 class="card-title">Selectors</h4>
+                            <section class="card-text d-flex justify-content-center align-items-center">
+                            <!-- Space to work -->
+                                <button class="btn  btn-danger btn-remove">-</button>
+                                <h2 class="m-3 display-1 ">0</h2>
+                                <button class="btn  btn-success btn-add">+</button>
+                            </section>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="js/jquery-3.6.0.min.js">
+    </script>
+    <script>
+        $(document).ready(function () {
+            $count = 0;
+            // Add
+            $('.btn-add').click(function(e){
+                $('h2').text(++$count)
+            })
+            $('.btn-add').dblclick(function(e){
+                $('h2').text($count+=10)
+            })
+
+            // ---------> Pendiente por revision
+            $('.btn-add').mousedown(function(e){
+                setInterval(()=>{
+                    $('h2').text(++$count)
+                },50);
+            })
+            $('.btn-add').mouseup(function(e){
+                setInterval(()=>{
+                    $('h2').text(++$count)
+                },50);
+            })
+            Remove
+
+
+            $('.btn-remove').click(function(e){
+                $('h2').text(--$count)
+            })
+            $('.btn-remove').dblclick(function(e){
+                $('h2').text($count-=10)
+            })
+        });
+
+    </script>
+</body>
+</html>
