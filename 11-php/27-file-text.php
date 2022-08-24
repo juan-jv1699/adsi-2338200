@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?="Files"?></title>
+    <title><?="File-Text"?></title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 <body>
@@ -19,10 +19,33 @@
     <main class="container">
     <div class="row">
         <div class="col-6 offset-3 text-center">
-            <?php echo "<h1 class='mt-5'>File-text</h1>";?>
+            <?php echo "<h1 class='mt-5'>File text</h1>";?>
             <hr>
             <!-- Space to work -->
-            
+            <div class="alert alert-info text-justify">
+				      <?php 
+				      	$file = fopen('text/lorem.txt', 'r') 
+				      	or exit("can't open");
+
+				      	while (!feof($file)) {
+				      		echo fgets($file);
+				      	}
+				      	fclose($file);
+				      ?>
+				      </div>
+				      <br>
+				      <br>
+				      <div class="alert alert-dark text-justify">
+				      <?php 
+				      	$file = fopen('text/lorem.txt', 'r') 
+				      	or exit("can't open");
+              
+				      	while (!feof($file)) {
+				      		echo fgetc($file).'-';
+				      	}
+				      	fclose($file);
+				      ?>
+				    </div>
         </div>
     </div>
     </main>
