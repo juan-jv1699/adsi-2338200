@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set & Get</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/fonts.css">
+    <style>
+        .elements{
+            width: 400px;
+        }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card text-center my-5">
+                  <div class="card-body">
+                    <nav class="breadcrumb">
+                        <a class="breadcrumb-item" href="index.html">&larr; Main Menu</a>
+                        <span class="breadcrumb-item active" aria-current="page"><b>Set & Get</b></span>
+                    </nav>
+                    <hr>
+                    <section class="card-text">
+                        <div class="actions d-flex justify-content-evenly p-2">
+
+                            <div class="set d-flex flex-column g-2">
+                                <h3>SET</h3>
+                                <button class="btn btn-dark set-text m-1">Text</button>
+                                <button class="btn btn-dark set-html m-1">HTML</button>
+                                <button class="btn btn-dark set-attr m-1">Attribute</button>
+                                <button class="btn btn-dark set-value m-1">Value</button>
+                            </div>
+                            <div class="get d-flex flex-column g-2">
+                                <h3>GET</h3>
+                                <button class="btn btn-dark get-text m-1">Text</button>
+                                <button class="btn btn-dark get-html m-1">HTML</button>
+                                <button class="btn btn-dark get-attr m-1">Attribute</button>
+                                <button class="btn btn-dark get-value m-1">Value</button>
+                            </div>
+                        </div>
+                        <div class="elements mt-3 mx-auto">
+                            <textarea class="form-control text-content" rows="5" placeholder="enter text o html"></textarea>
+                            <a class="link-content btn btn-link" href="http://www.starwars.com" target="_blank">Open starwars Webpage</a>
+                            <input type="text" class="form-control input-content" value="Darth Vader">
+                        </div>
+
+                    </section>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // SET 
+
+            // set text
+            $('.set-text').click(function(e){
+                e.preventDefault()
+                $('.text-content').text("aqui va todo el texto a imprimir")
+            })
+            // set html
+            $('.set-html').click(function(e){
+                e.preventDefault()
+                $('.text-content').html('<h4> aqui va el html </h4>')
+            })
+            // set attr
+            $('.set-attr').click(function(e){
+                e.preventDefault()
+                $('.link-content').attr('href', 'http://www.sena.edu.co').text('Pagina del sena')
+            })
+            // set value
+            $('.set-value').click(function(e){
+                e.preventDefault()
+                $('.input-content').val('Kylo ren')
+            })
+
+            // GET
+
+            // get text
+            $('.get-text').click(function(e){
+                e.preventDefault()
+                alert($('.active').text())
+            })
+            // get html
+            $('.get-html').click(function(e){
+                e.preventDefault()
+                alert($('.actions').html())
+            })
+            // get attr
+            $('.get-attr').click(function(e){
+                e.preventDefault()
+                alert($('.link-content').attr('href'))
+            })
+            // get value
+            $('.get-value').click(function(e){
+                e.preventDefault()
+                alert($('.input-content').val())
+            })
+        })//end ready function
+    </script>
+</body>
+</html>
