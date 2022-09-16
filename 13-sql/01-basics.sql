@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 -- To acces Data Bases (Mysql) in a web browser
 -- https://localhost/phpmyadmin;
 
@@ -135,4 +134,3 @@ CREATE DATABASE adsi2338200;
 
 -- Insert data in another table
  INSERT INTO pokemons_bk SELECT * FROM pokemons;
->>>>>>> 97aed00fd50da8d233998ad721c5618c82886757
