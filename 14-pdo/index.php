@@ -1,5 +1,7 @@
 <?php $title = 'Login'?>
 <?php include_once('includes/header.inc');?>
+<?php include_once('includes/redirect.inc');?>
+
 <!-- header include -->
     <main class="container">
         <section class="row">
@@ -12,7 +14,7 @@
                 <form action="" method="POST" enctype="multipart/form-data">
                     <div class="mb-3 text-center">
                         <figure class="figure">
-                            <img src="public/images/pokeball.png" width="240" id="preview" class="figure-img img-fluid img-thumbnail rounded">
+                            <img src="public/images/trainer.png" width="240" id="preview" class="figure-img img-fluid img-thumbnail rounded">
                         </figure>
                     </div>
                     <h3>Login for trainers</h3>
@@ -40,13 +42,13 @@
                     if($_POST){
                         $email = $_POST['email'];
                         $pass = md5($_POST['password']);
-                        if(login($conexion, $email, $pass)){
+                        if(login($conx, $email, $pass)){
                             echo "<script>
                                     window.location.replace('dashboard.php')
                                 </script>
                             ";
                         }else {
-                            $_SESSION['error'] = "Email & Password are incorrect!";
+                            $_SESSION['error'] = "Email or Password are incorrect!";
                         }
                     }
                 ?>

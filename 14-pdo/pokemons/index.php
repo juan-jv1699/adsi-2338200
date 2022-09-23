@@ -1,5 +1,5 @@
 <?php $title = 'All pokemons'?>
-<?php include_once('includes/header.inc');?>
+<?php include_once('../includes/header.inc');?>
 <!-- header include -->
     <main class="container">
         <section class="row">
@@ -33,7 +33,7 @@
                                 <td><?php echo $pokemon['name'] ?></td>
                                 <td class="d-none d-sm-table-cell"><span class="badge bg-dark"><?php echo $pokemon['type'] ?></span></td>
                                 <td>
-                                    <img src="<?= $pokemon['image']?>" width="40px">
+                                    <img src="../<?= $pokemon['image']?>" width="40px">
                                 </td>
                                 <td class="d-none d-sm-table-cell"><?php echo $pokemon['nametrainer'] ?></td>
                                 <td>
@@ -59,7 +59,7 @@
         <?php $conx = null; ?>
     </main>
     <!-- scripts include -->
-    <?php include ('includes/scripts.inc')?>
+    <?php include ('../includes/scripts.inc')?>
     <!--  -->
     <script>
         $(document).ready(function () {

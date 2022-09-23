@@ -1,5 +1,5 @@
 <?php $title = 'Add pokemon'?>
-<?php include_once('includes/header.inc');?>
+<?php include_once('../includes/header.inc');?>
 <!-- header include -->
     <main class="container">
         <section class="row">
@@ -20,7 +20,7 @@
                 <form action="" method="POST" enctype="multipart/form-data">
                     <div class="mb-3 text-center">
                         <figure class="figure">
-                            <img src="public/images/pokeball.png" width="240" id="preview" class="figure-img img-fluid img-thumbnail rounded">
+                            <img src="../public/images/pokeball.png" width="240" id="preview" class="figure-img img-fluid img-thumbnail rounded">
                         </figure>
                     </div>
                     <div class="mb-3">
@@ -122,7 +122,7 @@
         <?php $conx = null; ?>
     </main>
     <!-- scripts include -->
-    <?php include ('includes/scripts.inc')?>
+    <?php include ('../includes/scripts.inc')?>
     <!--  -->
 
     <script>

@@ -1,5 +1,5 @@
 <?php $title = 'Show pokemon'?>
-<?php include_once('includes/header.inc');?>
+<?php include_once('../includes/header.inc');?>
 <!-- header include -->
     <main class="container">
         <section class="row">
@@ -27,7 +27,7 @@
                             <?php foreach($pokemon as $pk): ?>
                                 <tr>
                                     <td colspan="2" class="text-center">
-                                        <img src="<?php echo $pk['image'] ?>" class="img-thumbnail" width="240px">
+                                        <img src="../<?php echo $pk['image'] ?>" class="img-thumbnail" width="240px">
                                     </td>
                                 </tr>
                                 <tr>
@@ -72,7 +72,7 @@
         <?php $conx = null; ?>
     </main>
      <!-- scripts include -->
-     <?php include ('includes/scripts.inc')?>
+     <?php include ('../includes/scripts.inc')?>
     <!--  -->
     <script>
         $(document).ready(function () {
