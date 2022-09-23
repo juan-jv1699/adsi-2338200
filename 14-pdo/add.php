@@ -1,6 +1,6 @@
 <?php $title = 'Add pokemon'?>
 <?php include_once('includes/header.inc');?>
-<!--  -->
+<!-- header include -->
     <main class="container">
         <section class="row">
             <div class="col-md-6 offset-md-3 my-5">
@@ -121,10 +121,10 @@
         </section>
         <?php $conx = null; ?>
     </main>
-    <script src="public/js/jquery-3.6.0.min.js"></script>
-    <script src="public/js/bootstrap.min.js"></script>
-    <script src="public/js/bootstrap.bundle.min.js"></script>
-    <script src="public/js/sweetalert2.js"></script>
+    <!-- scripts include -->
+    <?php include ('includes/scripts.inc')?>
+    <!--  -->
+
     <script>
         $(document).ready(function () {
             $('.btn-upload').click(function() {
