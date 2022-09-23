@@ -1,4 +1,4 @@
-<?php require 'config/app.php' ?>
+<?php require ('config/app.php') ?>
 <?php include('config/database.php') ?>
 <!DOCTYPE html>
 <html lang="en">
