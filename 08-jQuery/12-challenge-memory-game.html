@@ -45,7 +45,8 @@
         }
         div.cardg.is-flipped,
         div.cardg.match {
-            transform: rotateY(180deg);   
+            transform: rotateY(180deg);
+            /* pointer-events: none;   */
         }
         div.card-face{
             -webkit-backface-visibility: hidden;
@@ -174,18 +175,57 @@
         </button> -->
         
         <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
             <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">🥳🎉 Congratulations 🎉</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     You finish the game succesfully!
+                    <hr>
+                    <div class="data mt-2">
+                        <h5 class="badge bg-dark">Time: <span class="showTime"></span></h5>
+                        <h5 class="badge bg-dark">Moves: <span class="showMoves"></span></h5>
+                    </div>
+                    <input type="text" id="namePlayer" class="form-control" placeholder="Please enter your name">
                 </div>
                 <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-dark btnSave" disabled>
+                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    <span>waiting...</span>
+                </button>
+                <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                </div>
+            </div>
+            </div>
+        </div>
+
+         <!-- Modal Results-->
+         <div class="modal fade" id="modalTable" tabindex="-1" aria-labelledby="modalTableLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTableLabel">🏅 Results </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-striped table-hover table-condensed">
+                        <thead>
+                            <tr>
+                                <th>position</th>
+                                <th>names</th>
+                                <th>time</th>
+                                <th>moves</th>
+                            </tr>
+                        </thead>
+                        <tbody class="results">
+                            
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
                 </div>
             </div>
@@ -196,12 +236,22 @@
     <script src="js/bootstrap.min.js"></script>
     <script>
         $(document).ready(function(){
+            // solo test ojo!!!!!!!!!!
+            // $('#modalTable').modal('show')
+
 
             $('.cardg').addClass('is-flipped')
 
             setTimeout(()=>{
                 $('.cardg').removeClass('is-flipped')
-            },2000)
+
+                // timer
+                $tm = 0
+                $gameTime = setInterval(() => {
+                    ($tm == 0)? $s = 'second': $s = 'seconds'
+                    $('.time span').text(++$tm+$s)
+                }, 1000);
+            },1500)
             $moves = 0
             $cards = $('.cardg')
             $bgCards = ['card01','card01','card02','card02','card03','card03','card04','card04','card05','card05','card06','card06']
@@ -225,9 +275,11 @@
                         $class = $class.split(' ')
                         if($('.is-flipped').first().hasClass($class[2]) && $('.is-flipped').last().hasClass($class[2])){
 
-                            $('.is-flipped').addClass('match')
+                            $('.is-flipped').addClass('match').css('pointer-events','none')
                             $('.cardg').removeClass('is-flipped')
                             if($('.match').length == 12){
+                                $('.showMoves').text($moves)
+                                $('.showTime').text($tm)
                                 $('#exampleModal').modal('show')
                                 clearInterval($gameTime)
                             } 
@@ -244,16 +296,64 @@
                 }
             })
 
-            // timer
-            $tm = 0
-            $gameTime = setInterval(() => {
-                ($tm == 0)? $s = 'second': $s = 'seconds'
-                $('.time span').text(++$tm+$s)
-            }, 1000);
+            // 
+            $('#namePlayer').keyup(function(e){
+                if($(this).val().length > 2){
+                    $('.btnSave').prop('disabled', false)
+                    $('.btnSave span').first().hide()
+                    $('.btnSave span').last().text('save')
+                }else {
+                    $('.btnSave').prop('disabled', true)
+                    $('.btnSave span').first().show()
+                    $('.btnSave span').last().text('Wating...')
+                }
+            })
+
+            // -------
+            $('.btnSave').click(function(e){
+                $('#exampleModal').modal('hide')
+                
+                $playerData = {
+                        'name': $('#namePlayer').val(),
+                        'time': $tm,
+                        'moves': $moves
+                    }
+
+                if(localStorage.length > 0) {
+                    $data = JSON.parse(localStorage.getItem('playerData'))
+                    $data.push($playerData)
+                    localStorage.setItem('playerData', JSON.stringify($data))
+                }else {
+                    localStorage.setItem('playerData', '[]')
+                    $data = JSON.parse(localStorage.getItem('playerData'))
+                    $data.push($playerData)
+                    localStorage.setItem('playerData', JSON.stringify($data))
+                }
+
+                $dataTable = JSON.parse(localStorage.getItem('playerData')).sort(sortTable)
 
 
+                $index = 1
+                $html = ""
+                $dataTable.forEach(element => {
+                    $html += `<tr ${(element.name == $('#namePlayer').val()) ? 'class="bg-success text-light"' : ''}>
+                                <td>${$index++}</td> 
+                                <td>${element.name}</td> 
+                                <td>${element.time}</td> 
+                                <td>${element.moves}</td> 
+                            </tr>`
+                })
+                $('.results').html($html)
+                $('#modalTable').modal('show')
 
-        })
+                console.table(JSON.parse(localStorage.getItem('playerData')).sort(sortTable))
+            })
+
+            function sortTable(a, b){
+                return a.time - b.time;
+            }
+
+        }) //load docume
         
 
     </script>
