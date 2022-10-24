@@ -1,45 +1,70 @@
-<nav class="navbar navbar-expand-lg bg-dark text-light">
+<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="index.php">
-        <i class="fa fa-dragon text-light"></i>
+    <a class="navbar-brand" href="<?php echo $base_url . '/' ?>index.php">
+        <i class="fa fa-dragon"></i>
+        <small class="ms-2">Web App Pokemons</small>
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTop" aria-controls="navbarTop" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarTop">
-    <ul class="navbar-nav me-auto my-2 my-lg-0" >
-        <li class="nav-item">
-          <a class="nav-link active text-light" aria-current="page" href="index.php">Home</a>
-        </li>
-        
-        
-       
-    </ul>
-        
-    <ul class="navbar-nav ms-auto my-2 my-lg-0">
+      <ul class="navbar-nav me-auto my-2 my-lg-0">
+        <!-- <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+        </li> -->
+      </ul>
+      <ul class="navbar-nav ms-auto my-2 my-lg-0">
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="<?= $_SESSION['tphoto']?>" class="me-2 img-fluid rounded"alt="" style="width: 50px; height: 50px;">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="<?php echo $base_url . '/' .$_SESSION['tphoto'] ?>" class="me-2 img-fluid rounded" width="50px">
                 <?php echo $_SESSION['temail'] ?>
-            </a>
-            <ul class="dropdown-menu">
-                <li>
-                    
-                    <a class="dropdown-item" href="pokemons/index.php"><i class="fa fa-dragon"></i>  Pokemons</a>
-                </li>
-                <li>
-                    <a class="dropdown-item" href="trainers/index.php"><i class="fa fa-users"></i>  Trainers</a>
-                </li>
-                <li>
-                    <a class="dropdown-item" href="gyms/index.php"><i class="fa-solid fa-castle"></i> Gyms</a>
-                </li>
-                <hr>
-                <li>
-                    <a class="dropdown-item" href="close.php"><i class="fa-solid fa-right-from-bracket"></i> Close Session</a>
-                </li>
-            </ul>
+          </a>
+          <ul class="dropdown-menu">
+          <?php if($_SESSION['trole'] == 'Admin'):?>
+            <li>
+                <a class="dropdown-item" href="<?php echo $base_url . '/' ?>pokemons/index.php">
+                    <i class="fa fa-paw"></i>
+                    Pokemons
+                </a>
+            </li>
+            <li>
+                <a class="dropdown-item" href="<?php echo $base_url . '/' ?>trainers/index.php">
+                    <i class="fa fa-users"></i>
+                    Trainers
+                </a>
+            </li>
+            <li>
+                <a class="dropdown-item" href="<?php echo $base_url . '/' ?>gyms/index.php">
+                    <i class="fa fa-landmark"></i>
+                    Gyms
+                </a>
+            </li>
+
+          <?php else:?>
+            <li>
+                <a class="dropdown-item" href="<?php echo $base_url . '/' ?>pokemons/myPokemons.php">
+                    <i class="fa fa-paw"></i>
+                    My Pokemons
+                </a>
+            </li>
+            <li>
+                <a class="dropdown-item" href="<?php echo $base_url . '/' ?>trainers/myAccount.php">
+                    <i class="fa fa-user"></i>
+                    My account
+                </a>
+            </li>
+
+          <?php endif?>
+            <li><hr class="dropdown-divider"></li>
+            <li>
+                <a class="dropdown-item" href="<?php echo $base_url . '/' ?>close.php">
+                    <i class="fa fa-times"></i>
+                    Close Session
+                </a>
+            </li>
+          </ul>
         </li>
-    </ul>
+      </ul>
     </div>
   </div>
 </nav>
