@@ -12,5 +12,10 @@ Repositorio del tecnólogo en análisis y desarrollo de sistemas de información
 | 7. Javascript | Programing language (client side) | [open folder](07-javascript/) |
 | 8. jQuery     | Library Javascript                | [open folder](08-jQuery/)     |
 | 11. PHP       | Serve programing language         | [open folder](11-php)         |
+| 13. SQL       | Structure query lenguages         | [open folder](13-sql)         |
+| 14. PDO       | Serve programing language         | [open folder](14-pdo)         |
+| 15. CMS       | Content managment system          | [open folder](15-cms)         |
+| 16. POO       | Object oriented programming       | [open folder](16-POO)         |
+| 17. Laravel   | Framework PHP                     | [open folder](17-laravel)     |
 -----
 ![SENA](https://upload.wikimedia.org/wikipedia/commons/8/83/Sena_Colombia_logo.svg)
