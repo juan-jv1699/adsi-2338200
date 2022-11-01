@@ -16,6 +16,7 @@ Repositorio del tecnólogo en análisis y desarrollo de sistemas de información
 | 14. PDO       | Serve programing language         | [open folder](14-pdo)         |
 | 15. CMS       | Content managment system          | [open folder](15-cms)         |
 | 16. POO       | Object oriented programming       | [open folder](16-POO)         |
-| 17. Laravel   | Framework PHP                     | [open folder](17-laravel)     |
+| 17. MVC       | Model View Controller             | [open folder](17-MVC)         |
+| 18. Laravel   | Framework PHP                     | [open folder](18-laravel)     |
 -----
 ![SENA](https://upload.wikimedia.org/wikipedia/commons/8/83/Sena_Colombia_logo.svg)
