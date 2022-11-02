@@ -18,6 +18,26 @@
                     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z"></path></svg>
                     Add User
                 </a>
+                <?php if(isset($_SESSION['actualizado'])):?>
+                    <div class="bg-green-600 my-1 border-2 border-black/60 p-2 w-6/12 text-2xl rounded text-center mx-auto">
+                        <p>Se actualizo con exito</p>
+                    </div>
+                    <?php unset($_SESSION['actualizado'])?>
+                <?php elseif(isset($_SESSION['eliminado'])):?>
+                    <div class="bg-red-600 my-1 border-2 border-black/60 p-2 w-6/12 text-2xl rounded text-center mx-auto">
+                        <p>Se elimino con exito</p>
+                    </div>
+                    <?php unset($_SESSION['eliminado'])?>
+                <?php elseif(isset($_SESSION['creado'])):?>
+                    <div class="bg-blue-600 my-1 border-2 border-black/60 p-2 w-6/12 text-2xl rounded text-center mx-auto">
+                        <p>Se agrego el usuario con exito</p>
+                        <?php if(isset($_SESSION['imgMove'])):?>
+                            <p>La imagen se movio correctamente</p>
+                            <?php unset($_SESSION['imgMove'])?>
+                        <?php endif?>
+                    </div>
+                    <?php unset($_SESSION['creado'])?>
+                <?php endif?>
                 <table class="mt-6 w-[100%] mx-auto border-collapse">
                     <thead>
                         <tr class="bg-black/40 text-white/60 border-b-2 border-white/70 text-justify">
@@ -33,7 +53,7 @@
                             <td class="p-2"><?= $row['id']?></td>
                             <td><?= $row['fullname']?></td>
                             <td class="">
-                                <img src="<?= $row['photo']?>" alt="sinFoto" class="w-10 rounded-full mx-auto">
+                                <img src="public/img/<?= $row['photo']?>" alt="sinFoto" class="w-10 rounded-full mx-auto">
                             </td>
                             <td class="flex justify-evenly">
                                 <a href="?method=show&id=<?=$row['id']?>">

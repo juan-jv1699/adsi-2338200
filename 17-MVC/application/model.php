@@ -17,7 +17,19 @@ class Model extends DataBase {
     }
     
     public function deleteUser($id){
-        $sql = "DELETE * FROM users where id = $id";
+        $sql = "DELETE FROM users where id = $id";
+        $resp = mysqli_query($this->conx,$sql);
+        return $resp;
+    }
+    
+    public function updateUser($name,$mail,$rol,$id, $photo){
+        $sql = "UPDATE `users` SET `fullname`='$name',`email`='$mail', `photo`='$photo',`rol`='$rol' WHERE `id` = $id ";
+        $resp = mysqli_query($this->conx,$sql);
+        return $resp;
+    }
+
+    public function addUser($name,$mail,$rol,$photo){
+        $sql = "INSERT INTO `users`(`fullname`, `email`, `photo`, `rol`) VALUES ('$name','$mail','$photo','$rol')";
         $resp = mysqli_query($this->conx,$sql);
         return $resp;
     }
