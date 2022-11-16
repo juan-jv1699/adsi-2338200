@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use PhpParser\Node\Expr\New_;
 use App\Models\Game;
 
 class GameSeeder extends Seeder

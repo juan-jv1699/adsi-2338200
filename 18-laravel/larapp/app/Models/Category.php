@@ -11,4 +11,8 @@ class Category extends Model
 
     protected $fillable = ['name','image','description'];
 
+    public function Game(){
+        return $this->hasMan('App\Models\Game');
+    }
+
 }
