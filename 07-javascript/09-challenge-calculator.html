@@ -291,20 +291,20 @@
             }
             else {
                 operStatus=true
-            }display.value= display.value.slice(0,-1)
-            if ((isNaN(display.value.slice(-1)))) {
-                operStatus=false
             }
-            else {
-                operStatus=true
-            }
+            // display.value= display.value.slice(0,-1)
+            // if ((isNaN(display.value.slice(-1)))) {
+            //     operStatus=false
+            // }
+            // else {
+            //     operStatus=true
+            // }
         }
         function validateLength() {
             if(display.value.length < 55 ){
                 return true
-            } else {
-                return false
             }
+            return false
         };
         function addToDisplay(c) {
             if(validateLength()) {

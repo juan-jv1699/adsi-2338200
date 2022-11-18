@@ -235,6 +235,7 @@
     <script src="js/jquery-3.6.0.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script>
+        
         $(document).ready(function(){
             // solo test ojo!!!!!!!!!!
             // $('#modalTable').modal('show')
@@ -252,6 +253,7 @@
                     $('.time span').text(++$tm+$s)
                 }, 1000);
             },1500)
+
             $moves = 0
             $cards = $('.cardg')
             $bgCards = ['card01','card01','card02','card02','card03','card03','card04','card04','card05','card05','card06','card06']
@@ -273,6 +275,7 @@
 
                         $class = $('.is-flipped').attr('class')
                         $class = $class.split(' ')
+                        console.log($class)
                         if($('.is-flipped').first().hasClass($class[2]) && $('.is-flipped').last().hasClass($class[2])){
 
                             $('.is-flipped').addClass('match').css('pointer-events','none')

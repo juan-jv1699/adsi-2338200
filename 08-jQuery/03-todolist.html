@@ -15,12 +15,13 @@
         <section class="container">
             <div class="row">
                 <div class="col-md-6 offset-md-3">
+
                     <div class="card text-center mx-auto">
                         <div class="card-body">
                             <nav class="breadcrumb">
                                 <a class="breadcrumb-item" href="/index.html">Main menu</a>
                                 <span class="breadcrumb-item active" aria-current="page">ToDoList</span>
-                            </nav>
+                            </nav>  
                             <section id="body" class="card-text">
                                 <!-- here alert -->
                                 <div class="card border-secondary">
@@ -121,10 +122,9 @@
                     $('#body').prepend($alertError)
                 } 
             })
-            // ---------------
-            $('.btn-close').click(function(e){
-                e.preventDefault;
-            })
+            // -------------
+
+            
             // check done
             $('body').on('click','.form-check-input', function(e){
                 if ($(this).prop('checked')) {
@@ -142,7 +142,7 @@
                 if(!$(this).parent().prev().children().children().prop('checked')){
                     updateRemains('delete')
                 }
-                $(this).closest('.row').remove();
+                $(this).closest('.row').remove()
 
                 updateTasks('delete')
             })
@@ -157,6 +157,7 @@
             } else {
                 $('.num_tasks').text(--$num_tasks);
             }
+            
             if($num_tasks>1){
                 $('.title_task').text('Tasks')                
             }else{
